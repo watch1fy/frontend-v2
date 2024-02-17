@@ -32,7 +32,7 @@ import { Logo } from "@/components/icons";
 export const Navbar = () => {
 	const searchInput = (
 		<Input
-			aria-label="Search"
+			aria-label="Searchh"
 			classNames={{
 				inputWrapper: "bg-default-100",
 				input: "text-sm",
@@ -43,7 +43,7 @@ export const Navbar = () => {
 				</Kbd>
 			}
 			labelPlacement="outside"
-			placeholder="Search..."
+			placeholder="Searchh..."
 			startContent={
 				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
 			}
