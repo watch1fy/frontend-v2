@@ -38,7 +38,7 @@ export default function RootLayout({
 			<SuperTokensInit>
 				<body
 					className={clsx(
-						"min-h-screen bg-background font-sans antialiased",
+						"font-sans antialiased",
 						urbanist.variable
 					)}
 				>
