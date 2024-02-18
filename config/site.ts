@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Next.js + NextUI",
+	name: "Watchify | Watch Together",
 	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
 		{
@@ -9,8 +9,8 @@ export const siteConfig = {
 			href: "/",
 		},
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Auth",
+      href: "/auth",
     },
     {
       label: "Pricing",
