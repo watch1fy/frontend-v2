@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
 import { SuperTokensInit } from "@/components/supertokens/supertokensInit";
+import Footer from "@/components/footer";
 
 export const viewport: Viewport = {
 	themeColor: [
@@ -33,24 +34,22 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning className="scroll-smooth">
 			<head />
 			<SuperTokensInit>
 				<body
 					className={clsx(
-						"font-sans antialiased",
-						urbanist.variable
+						"bg-background font-sans antialiased",
+						urbanist.className,
 					)}
 				>
 					<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-						<div className="relative flex flex-col h-screen">
+						<div className="flex flex-col h-full">
 							<Navbar />
-							<main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+							<main className="container mx-auto max-w-7xl py-12 px-6 flex-grow flex flex-col gap-8">
 								{children}
 							</main>
-							<footer className="w-full flex items-center justify-center py-3">
-								Hey this is footer.
-							</footer>
+							<Footer />
 						</div>
 					</Providers>
 				</body>

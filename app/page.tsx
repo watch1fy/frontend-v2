@@ -1,13 +1,17 @@
+import About from "@/components/home/about";
+import CTA from "@/components/home/cta";
+import Features from "@/components/home/feautures";
+import Hero from "@/components/home/hero";
+import MovieSlides from "@/components/home/movie-slide";
+
 export default function Home() {
 	return (
-		<Hero />
+		<>
+			<Hero />
+			{/* <MovieSlides /> */}
+			<CTA />
+			<About />
+			<Features />
+		</>
 	);
-}
-
-const Hero = () => {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			Hello World!
-		</section>
-	)
 }
