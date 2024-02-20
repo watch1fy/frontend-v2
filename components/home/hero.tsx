@@ -7,17 +7,17 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section>
-      <div className="flex flex-col-reverse md:flex-row align-middle justify-between gap-4 lg:gap-36 md:gap-18">
-        <div className="w-full flex flex-col justify-between gap-4 min-h-full">
+      <div className="flex flex-col-reverse md:flex-row align-middle justify-between gap-4 lg:gap-36 md:gap-18 mb-8">
+        <div className="w-full flex flex-col justify-between items-center gap-4 min-h-full">
           <div className="w-full flex flex-col justify-between gap-4">
-            <div className="text-4xl sm:text-5xl lg:text-7xl md:text-start text-center">
+            <div className="text-4xl sm:text-5xl lg:text-7xl  text-center">
               Watch&nbsp;
               <span className="text-primary-500">
                 Together
               </span>
               , wherever you are.
             </div>
-            <span className="text-lg sm:text-xl md:text-start text-center">
+            <span className="text-lg sm:text-xl  text-center">
               Watch together, even when miles apart. Real-time sync, video chat, and more.
             </span>
           </div>
@@ -28,13 +28,6 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
-        <Image
-          alt="Watch together"
-          className="md:w-[360px] w-full"
-          height={100}
-          src="/illustrations/presencefinal.svg"
-          width={100}
-        />
       </div>
     </section>
   )

@@ -9,7 +9,7 @@ function CTA() {
 
   return (
     <section
-      className="flex flex-col items-center justify-center py-12 rounded-3xl">
+      className="flex flex-col items-center justify-center rounded-3xl">
       <Divider className="mb-8"/>
       <div className="flex flex-col gap-2 items-center">
         <div className="flex flex-row gap-4 justify-between w-full items-start">
