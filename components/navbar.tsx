@@ -9,34 +9,21 @@ import {
 import { Button } from "@nextui-org/button";
 import NextLink from "next/link";
 import { ThemeSwitch } from "./theme-switch";
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { ImageProps } from "@/types";
 import Image from "next/image";
 import { useDisclosure } from "@nextui-org/react";
 import AuthModal from "./signin";
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 
 export const Navbar = () => {
-	const [scroll, setScroll] = useState<boolean>();
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 20) {
-				setScroll(true)
-				console.log(window.scrollY)
-			}
-		}
-		window.addEventListener('scroll', handleScroll)
-
-		return window.removeEventListener('scroll', handleScroll)
-	}, [scroll])
-
 	return (
 		<NextUINavbar
 			maxWidth="xl"
-			position="sticky"
-			className="py-2">
+			shouldHideOnScroll={false}
+			className="top-0">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center gap-1" href="/">
@@ -49,7 +36,10 @@ export const Navbar = () => {
 				className="sm:flex basis-1/5 sm:basis-full"
 				justify="end"
 			>
-				<NavbarItem className="flex gap-2">
+				<NavbarItem className="flex gap-4 flex-row justify-center items-center">
+					<Link target="blank" href={'https://github.com/watch1fy'}>
+						<FaGithub size={20} className="sm:flex hidden"/>
+					</Link>
 					<ThemeSwitch />
 					<SignInButton />
 				</NavbarItem>
@@ -77,15 +67,26 @@ export const SignInButton = () => {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	return (
-		<Button
-			size="md"
-			color="primary"
-			variant="flat"
-			onPress={onOpen}>
-			Sign In
+		<>
+			<Button
+				size="md"
+				color="primary"
+				variant="flat"
+				onPress={onOpen}
+				className="sm:flex hidden">
+				Sign In
+			</Button>
+			<Button
+				size="sm"
+				color="primary"
+				variant="flat"
+				onPress={onOpen}
+				className="sm:hidden flex">
+				Sign In
+			</Button>
 			<AuthModal
 				isOpen={isOpen}
-				onOpenChange={onOpenChange}/>
-		</Button>
+				onOpenChange={onOpenChange} />
+		</>
 	)
 }

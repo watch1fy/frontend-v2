@@ -9,7 +9,11 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'primary-custom': '0px 0px 10px 2px rgba(243, 18, 96, 0.25)',
+      }
+    },
   },
   darkMode: "class",
   plugins: [nextui({

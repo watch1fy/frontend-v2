@@ -1,13 +1,21 @@
+import About from "@/components/home/about";
+import CTA from "@/components/home/cta";
+import Features from "@/components/home/feautures";
+import Hero from "@/components/home/hero";
+import MovieSlides, {MovieCardSkeletonSlide} from "@/components/home/movie-slide";
+import { Suspense } from "react";
+
 export default function Home() {
 	return (
-		<Hero />
+		<>
+			<Hero />
+			<Suspense fallback={<MovieCardSkeletonSlide />}>
+				{/* @ts-expect-error Server Component */}
+				<MovieSlides />
+			</Suspense>
+			<CTA />
+			<About />
+			<Features />
+		</>
 	);
-}
-
-const Hero = () => {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			Hello World!
-		</section>
-	)
 }

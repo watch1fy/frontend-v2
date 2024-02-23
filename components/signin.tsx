@@ -12,17 +12,17 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { MdEmail, MdLock } from "react-icons/md";
-import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 import { BsApple, BsGoogle, BsFacebook } from "react-icons/bs"
 
 interface IAuthModal {
   isOpen: boolean
   onOpenChange: (isOpen: boolean) => void
+  isSignUpModal?: boolean
 }
 
-export default function AuthModal({ isOpen, onOpenChange } : IAuthModal) {
+export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false } : IAuthModal) {
 
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(isSignUpModal);
 
   return (
     <>
@@ -30,6 +30,7 @@ export default function AuthModal({ isOpen, onOpenChange } : IAuthModal) {
         isKeyboardDismissDisabled={true}
         isDismissable={false}
         isOpen={isOpen}
+        size="sm"
         onOpenChange={onOpenChange}
         placement="center"
       >
@@ -45,7 +46,7 @@ export default function AuthModal({ isOpen, onOpenChange } : IAuthModal) {
                 <span className="text-sm font-light">
                   {
                     isSignUp
-                      ? "Already have and account?" 
+                      ? "Already have an account?" 
                       : "Don't have an account?"
                   }
                   <span
@@ -65,26 +66,29 @@ export default function AuthModal({ isOpen, onOpenChange } : IAuthModal) {
                   <Button
                     color="default"
                     variant="bordered"
-                    className="w-full flex"
+                    size="lg"
+                    className="w-full"
                     startContent={<BsGoogle />}>
                     Continue with Google
                   </Button>
                   <Button
                     color="default"
                     variant="bordered"
-                    className="w-full flex"
+                    size="lg"
+                    className="w-full"
                     startContent={<BsFacebook />}>
                     Continue with Facebook
                   </Button>
                   <Button
                     color="default"
                     variant="bordered"
-                    className="w-full flex"
+                    size="lg"
+                    className="w-full"
                     startContent={<BsApple />}>
                     Continue with Apple
                   </Button>
                 </div>
-                <Divider className="my-4"/>
+                <Divider className="mb-4 mt-2"/>
                 <Input
                   autoFocus
                   endContent={
