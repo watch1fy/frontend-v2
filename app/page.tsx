@@ -10,7 +10,6 @@ export default function Home() {
 		<>
 			<Hero />
 			<Suspense fallback={<MovieCardSkeletonSlide />}>
-				{/* @ts-expect-error Server Component */}
 				<MovieSlides />
 			</Suspense>
 			<CTA />

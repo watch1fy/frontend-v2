@@ -6,7 +6,7 @@ import { BsFillInfoCircleFill } from 'react-icons/bs';
 
 const MovieSlides = async () => {
   const movies_res : any = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_APP_TMDB_API_KEY}`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
   ).then((data) => data.json())
 
   const movies : any[] = movies_res.results;
@@ -50,7 +50,7 @@ export const MovieCard = ({
   return (
     <Card
       radius="lg"
-      className="border-none w-56 h-fit"
+      className="border-none w-56 h-fit group"
     >
       <CardHeader>
         <p className='text-xl truncate w-full'>{title}</p>
@@ -58,11 +58,18 @@ export const MovieCard = ({
       <CardBody>
         <Image
           alt={`${title} Cover Image`}
-          className="object-cover rounded-lg w-fit h-auto"
+          className="object-cover rounded-lg w-full h-auto group-hover:hidden"
           height={200}
           src={`https://image.tmdb.org/t/p/original${image}` || '/illustrations/chat'}
           width={200}
         />
+        <ScrollShadow hideScrollBar className='hidden group-hover:block h-[300px]' orientation='vertical'>
+          <span className='cursor-default'>
+            {
+              desc
+            }
+          </span>
+        </ScrollShadow>
       </CardBody>
       <CardFooter className='flex flex-row items-center justify-between'>
         <div className='flex flex-row items-start gap-2 justify-center'>
@@ -77,8 +84,6 @@ export const MovieCard = ({
             <p className='text-sm text-gray-500'>{votes}</p>
           </div>
         </div>
-        <BsFillInfoCircleFill
-          className='hidden group-hover:flex text-gray-500 cursor-pointer'/>
       </CardFooter>
     </Card>
   )

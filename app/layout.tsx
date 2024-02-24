@@ -2,10 +2,10 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
 import { urbanist } from "@/config/fonts";
-import { Providers } from "./providers";
+import { Providers } from "../components/providers/nextuiProviders";
 import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
-import { SuperTokensInit } from "@/components/supertokens/supertokensInit";
+import { SuperTokensProvider } from "@/components/providers/supertokensProvider";
 import Footer from "@/components/footer";
 
 export const viewport: Viewport = {
@@ -36,7 +36,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning className="scroll-smooth">
 			<head />
-			<SuperTokensInit>
+			<SuperTokensProvider>
 				<body
 					className={clsx(
 						"bg-background font-sans antialiased",
@@ -44,7 +44,7 @@ export default function RootLayout({
 					)}
 				>
 					<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-						<div className="flex flex-col h-full">
+						<div className="flex flex-col h-full min-h-screen">
 							<Navbar />
 							<main className="container mx-auto max-w-7xl py-12 px-6 flex-grow flex flex-col gap-8">
 								{children}
@@ -53,7 +53,7 @@ export default function RootLayout({
 						</div>
 					</Providers>
 				</body>
-			</SuperTokensInit>
+			</SuperTokensProvider>
 		</html>
 	);
 }

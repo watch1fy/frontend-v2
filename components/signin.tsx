@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Modal,
   ModalContent,
@@ -11,8 +13,11 @@ import {
   Divider
 } from "@nextui-org/react";
 import { useState } from "react";
-import { MdEmail, MdLock } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import {IoMdEye, IoMdEyeOff} from 'react-icons/io'
 import { BsApple, BsGoogle, BsFacebook } from "react-icons/bs"
+import { getAuthorisationURLWithQueryParamsAndSetState } from "supertokens-web-js/recipe/thirdpartyemailpassword";
+import { useRouter } from "next/navigation";
 
 interface IAuthModal {
   isOpen: boolean
@@ -22,7 +27,27 @@ interface IAuthModal {
 
 export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false } : IAuthModal) {
 
-  const [isSignUp, setIsSignUp] = useState(isSignUpModal);
+  const [isSignUp, setIsSignUp] = useState<boolean>(isSignUpModal);
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
+  const router = useRouter()
+
+  const handleGoogleAuth = async () => {
+    try{
+      const authUrl: string = await getAuthorisationURLWithQueryParamsAndSetState({
+        frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/auth/callback/google`,
+        thirdPartyId: 'google'
+      })
+
+      router.replace(authUrl)
+    } catch (err: any) {
+      if (err.isSuperTokensGeneralError === true) {
+        // this may be a custom error message sent from the API by you.
+        console.error(err.message);
+      } else {
+        console.error("Oops! Something went wrong.\n", err);
+      }
+    }
+  }
 
   return (
     <>
@@ -68,7 +93,8 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                     variant="bordered"
                     size="lg"
                     className="w-full"
-                    startContent={<BsGoogle />}>
+                    startContent={<BsGoogle />}
+                    onClick={handleGoogleAuth}>
                     Continue with Google
                   </Button>
                   <Button
@@ -100,11 +126,19 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                 />
                 <Input
                   endContent={
-                    <MdLock />
+                    <button 
+                      className="focus:outline-none" type="button"
+                      onClick={() => setPasswordVisible(!passwordVisible)}>
+                    {
+                      passwordVisible
+                       ? <IoMdEyeOff />
+                       : <IoMdEye />
+                    }
+                    </button>
                   }
                   label="Password"
                   placeholder="Enter your password"
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   variant="bordered"
                 />
                 {
