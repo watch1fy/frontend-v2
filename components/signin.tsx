@@ -3,51 +3,35 @@
 import {
   Modal,
   ModalContent,
-  ModalHeader, 
+  ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
   Checkbox,
   Input,
   Link,
-  Divider
+  Divider,
 } from "@nextui-org/react";
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import {IoMdEye, IoMdEyeOff} from 'react-icons/io'
-import { BsApple, BsGoogle, BsFacebook } from "react-icons/bs"
-import { getAuthorisationURLWithQueryParamsAndSetState } from "supertokens-web-js/recipe/thirdpartyemailpassword";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { BsApple, BsGoogle, BsFacebook } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 
 interface IAuthModal {
-  isOpen: boolean
-  onOpenChange: (isOpen: boolean) => void
-  isSignUpModal?: boolean
+  isOpen: boolean;
+  onOpenChange: (isOpen: boolean) => void;
+  isSignUpModal?: boolean;
 }
 
-export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false } : IAuthModal) {
-
+export default function AuthModal({
+  isOpen,
+  onOpenChange,
+  isSignUpModal = false,
+}: IAuthModal) {
   const [isSignUp, setIsSignUp] = useState<boolean>(isSignUpModal);
-  const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
-  const router = useRouter()
-
-  const handleGoogleAuth = async () => {
-    try{
-      const authUrl: string = await getAuthorisationURLWithQueryParamsAndSetState({
-        frontendRedirectURI: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/auth/callback/google`,
-        thirdPartyId: 'google'
-      })
-
-      router.replace(authUrl)
-    } catch (err: any) {
-      if (err.isSuperTokensGeneralError === true) {
-        // this may be a custom error message sent from the API by you.
-        console.error(err.message);
-      } else {
-        console.error("Oops! Something went wrong.\n", err);
-      }
-    }
-  }
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const router = useRouter();
 
   return (
     <>
@@ -63,26 +47,17 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                {
-                  isSignUp
-                    ? "Sign Up"
-                    : "Sign In"
-                }
+                {isSignUp ? "Sign Up" : "Sign In"}
                 <span className="text-sm font-light">
-                  {
-                    isSignUp
-                      ? "Already have an account?" 
-                      : "Don't have an account?"
-                  }
+                  {isSignUp
+                    ? "Already have an account?"
+                    : "Don't have an account?"}
                   <span
                     className="text-primary-500 cursor-pointer"
-                    onClick={() => setIsSignUp(!isSignUp)}>
-                      &nbsp;&nbsp;
-                    {
-                      isSignUp
-                        ? "Sign In"
-                        : "Sign Up"
-                    }
+                    onClick={() => setIsSignUp(!isSignUp)}
+                  >
+                    &nbsp;&nbsp;
+                    {isSignUp ? "Sign In" : "Sign Up"}
                   </span>
                 </span>
               </ModalHeader>
@@ -94,7 +69,7 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                     size="lg"
                     className="w-full"
                     startContent={<BsGoogle />}
-                    onClick={handleGoogleAuth}>
+                  >
                     Continue with Google
                   </Button>
                   <Button
@@ -102,7 +77,8 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                     variant="bordered"
                     size="lg"
                     className="w-full"
-                    startContent={<BsFacebook />}>
+                    startContent={<BsFacebook />}
+                  >
                     Continue with Facebook
                   </Button>
                   <Button
@@ -110,30 +86,27 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                     variant="bordered"
                     size="lg"
                     className="w-full"
-                    startContent={<BsApple />}>
+                    startContent={<BsApple />}
+                  >
                     Continue with Apple
                   </Button>
                 </div>
-                <Divider className="mb-4 mt-2"/>
+                <Divider className="mb-4 mt-2" />
                 <Input
                   autoFocus
-                  endContent={
-                    <MdEmail />
-                  }
+                  endContent={<MdEmail />}
                   label="Email"
                   placeholder="Enter your email"
                   variant="bordered"
                 />
                 <Input
                   endContent={
-                    <button 
-                      className="focus:outline-none" type="button"
-                      onClick={() => setPasswordVisible(!passwordVisible)}>
-                    {
-                      passwordVisible
-                       ? <IoMdEyeOff />
-                       : <IoMdEye />
-                    }
+                    <button
+                      className="focus:outline-none"
+                      type="button"
+                      onClick={() => setPasswordVisible(!passwordVisible)}
+                    >
+                      {passwordVisible ? <IoMdEyeOff /> : <IoMdEye />}
                     </button>
                   }
                   label="Password"
@@ -141,8 +114,7 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                   type={passwordVisible ? "text" : "password"}
                   variant="bordered"
                 />
-                {
-                  !isSignUp ?
+                {!isSignUp ? (
                   <div className="flex py-2 px-1 justify-between">
                     <Checkbox
                       classNames={{
@@ -150,13 +122,12 @@ export default function AuthModal({ isOpen, onOpenChange, isSignUpModal = false 
                       }}
                     >
                       Remember me
-                    </Checkbox> 
-                        <Link color="primary" href="#" size="sm">
-                          Forgot password?
-                        </Link>
-                    </div> :
-                    null
-                }
+                    </Checkbox>
+                    <Link color="primary" href="#" size="sm">
+                      Forgot password?
+                    </Link>
+                  </div>
+                ) : null}
               </ModalBody>
               <ModalFooter>
                 <Button color="default" variant="flat" onPress={onClose}>
