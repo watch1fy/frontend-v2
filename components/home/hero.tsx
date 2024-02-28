@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Button } from "@nextui-org/button";
 import { MdArrowForward } from "react-icons/md";
 import Link from "next/link";

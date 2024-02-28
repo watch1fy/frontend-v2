@@ -16,7 +16,6 @@ import { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { BsApple, BsGoogle, BsFacebook } from "react-icons/bs";
-import { useRouter } from "next/navigation";
 
 interface IAuthModal {
   isOpen: boolean;
@@ -31,7 +30,6 @@ export default function AuthModal({
 }: IAuthModal) {
   const [isSignUp, setIsSignUp] = useState<boolean>(isSignUpModal);
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const router = useRouter();
 
   return (
     <>
