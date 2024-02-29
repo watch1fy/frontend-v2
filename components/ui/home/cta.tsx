@@ -1,7 +1,7 @@
 "use client";
 import { Divider, Button } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
-import AuthModal from "../signin";
+import { AuthModal } from "../auth";
 
 function CTA() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

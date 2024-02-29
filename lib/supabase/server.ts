@@ -1,38 +1,38 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { cookies } from 'next/headers'
+import { cookies } from "next/headers";
 
 export function createSupabaseServerClient() {
   const cookieStore = cookies();
 
-  return createServerClient(
-    process.env.NODE_ENV!,
-    process.env.NODE_ENV!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          try {
-            cookieStore.set({ name, value, ...options })
-          } catch (error) {
-            // The `set` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
-            console.error('`SET cookie` method was called from a server component');
-          }
-        },
-        remove(name: string, options: CookieOptions) {
-          try {
-            cookieStore.set({ name, value: '', ...options })
-          } catch (error) {
-            // The `delete` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
-            console.error('`DELETE cookie` method was called from a server component');
-          }
-        },
-      }
-    }
-  )
+  return createServerClient(process.env.NODE_ENV!, process.env.NODE_ENV!, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value;
+      },
+      set(name: string, value: string, options: CookieOptions) {
+        try {
+          cookieStore.set({ name, value, ...options });
+        } catch (error) {
+          // The `set` method was called from a Server Component.
+          // This can be ignored if you have middleware refreshing
+          // user sessions.
+          console.error(
+            "`SET cookie` method was called from a server component",
+          );
+        }
+      },
+      remove(name: string, options: CookieOptions) {
+        try {
+          cookieStore.set({ name, value: "", ...options });
+        } catch (error) {
+          // The `delete` method was called from a Server Component.
+          // This can be ignored if you have middleware refreshing
+          // user sessions.
+          console.error(
+            "`DELETE cookie` method was called from a server component",
+          );
+        }
+      },
+    },
+  });
 }

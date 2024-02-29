@@ -12,7 +12,7 @@ import { ThemeSwitch } from "./theme-switch";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useDisclosure } from "@nextui-org/react";
-import AuthModal from "./signin";
+import { AuthModal } from "./auth";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 
@@ -27,7 +27,11 @@ export const Navbar = () => {
     <NextUINavbar maxWidth="xl" shouldHideOnScroll={false} className="top-0">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink
+            as={"image"}
+            className="flex justify-start items-center gap-1"
+            href="/"
+          >
             <Logo width={180} height={60} />
           </NextLink>
         </NavbarBrand>

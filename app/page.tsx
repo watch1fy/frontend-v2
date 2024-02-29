@@ -1,10 +1,5 @@
-import About from "@/components/home/about";
-import CTA from "@/components/home/cta";
-import Features from "@/components/home/feautures";
-import Hero from "@/components/home/hero";
-import MovieSlides, {
-  MovieCardSkeletonSlide,
-} from "@/components/home/movie-slide";
+import { About, CTA, Features, Hero, MovieSlides } from "@/components/ui/";
+import { MovieCardSkeletonSlide } from "@/components/skeleton";
 import { Suspense } from "react";
 
 export default function Home() {

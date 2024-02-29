@@ -1,5 +1,5 @@
 import React from "react";
-import FeatureAnchor from "@/components/anchor";
+import FeatureAnchor from "@/components/ui/anchor";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
