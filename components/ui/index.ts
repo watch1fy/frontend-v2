@@ -15,5 +15,5 @@ export {
   Footer,
   Navbar,
   AuthModal,
-  ThemeSwitch
+  ThemeSwitch,
 };

@@ -1,3 +1,3 @@
 import { MovieCardSkeletonSlide } from "./moviecard";
 
-export { MovieCardSkeletonSlide }
+export { MovieCardSkeletonSlide };

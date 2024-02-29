@@ -45,7 +45,9 @@ export default function RootLayout({
           urbanist.className,
         )}
       >
-        <NextUIProviders themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <NextUIProviders
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}
+        >
           <div className="flex flex-col h-full min-h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl py-12 px-6 flex-grow flex flex-col gap-8">
