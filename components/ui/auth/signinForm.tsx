@@ -4,8 +4,9 @@ import { FormInput, PasswordInput } from "./form-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
-import { signInWithEmail } from "@/lib/actions/auth";
 import { SignInSchema } from "@/lib/schema";
+import { toast } from "sonner";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 function SignInForm() {
   const { control, handleSubmit } = useForm<SignInFormData>({
@@ -13,10 +14,26 @@ function SignInForm() {
   });
 
   const signIn = async (signinData: SignInFormData) => {
-    // return console.log(signinData)
-    const res = await signInWithEmail(signinData);
-    const { data, error } = JSON.parse(res);
+    const supabase = createSupabaseBrowserClient();
+    const { data, error } = await supabase.auth.signInWithPassword(signinData);
     console.log(data, error);
+    if (error?.message === "Invalid login credentials") {
+      toast.error(error.message || "", {
+        duration: 5000,
+        description: `Wrong email/password or the account with email '${signinData.email}' does not exists`,
+      });
+      return;
+    } else if (error?.message.startsWith("Email")) {
+      toast.error(error.message || "", {
+        duration: 5000,
+        description: `Please verify your email via the email sent to '${signinData.email}' and try again`,
+      });
+      return;
+    }
+    toast.success("Logged in succesfully", {
+      duration: 5000,
+      description: `You are now logged in as ${signinData.email}`,
+    });
   };
 
   return (

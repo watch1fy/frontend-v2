@@ -15,7 +15,6 @@ export const signUpNewUser = async ({ email, password }: SignUpFormData) => {
 };
 
 export const signInWithEmail = async ({ email, password }: SignInFormData) => {
-  console.log(email, password);
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email,
     password: password,
@@ -26,6 +25,9 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
 export const socialSignIn = async ({ provider }: { provider: Provider }) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
+    options: {
+      redirectTo: `${process.env.WEBSITE_ORIGIN}/auth/callback`,
+    },
   });
   return JSON.stringify({ data, error });
 };

@@ -9,9 +9,11 @@ import {
   Divider,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { BsGoogle, BsFacebook } from "react-icons/bs";
+import { BsGoogle, BsDiscord } from "react-icons/bs";
 import SignInForm from "./signinForm";
 import SignUpForm from "./signupForm";
+import { toast } from "sonner";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 interface IAuthModal {
   isOpen: boolean;
@@ -57,7 +59,8 @@ export default function AuthModal({
                 variant="bordered"
                 size="lg"
                 className="w-full"
-                startContent={<BsGoogle />}
+                startContent={<BsGoogle size={16} />}
+                onClick={signInWithGoogle}
               >
                 Continue with Google
               </Button>
@@ -66,9 +69,10 @@ export default function AuthModal({
                 variant="bordered"
                 size="lg"
                 className="w-full"
-                startContent={<BsFacebook />}
+                startContent={<BsDiscord size={18} />}
+                onClick={signInWithDiscord}
               >
-                Continue with Facebook
+                Continue with Discord
               </Button>
             </div>
             <Divider className="mb-4 mt-2" />
@@ -79,3 +83,37 @@ export default function AuthModal({
     </>
   );
 }
+
+const signInWithGoogle = async () => {
+  const supabase = createSupabaseBrowserClient();
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${location.origin}/auth/callback`,
+    },
+  });
+  if (error) {
+    toast.error(error.message || "", {
+      duration: 5000,
+      description: `Could not complete sign up with google`,
+    });
+    return;
+  }
+};
+
+const signInWithDiscord = async () => {
+  const supabase = createSupabaseBrowserClient();
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "discord",
+    options: {
+      redirectTo: `${location.origin}/auth/callback`,
+    },
+  });
+  if (error) {
+    toast.error(error.message || "", {
+      duration: 5000,
+      description: `Could not complete sign up with google`,
+    });
+    return;
+  }
+};

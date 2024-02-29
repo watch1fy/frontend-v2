@@ -4,8 +4,9 @@ import { SignUpFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema } from "@/lib/schema";
-import { signUpNewUser } from "@/lib/actions/auth";
 import { FormInput, PasswordInput } from "./form-input";
+import { toast } from "sonner";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 function SignUpForm() {
   const { control, handleSubmit } = useForm<SignUpFormData>({
@@ -13,10 +14,19 @@ function SignUpForm() {
   });
 
   const signUp = async (signupData: SignUpFormData) => {
-    return console.log(signupData);
-    const res = await signUpNewUser(signupData);
-    const { data, error } = JSON.parse(res);
-    console.log(data, error);
+    const supabase = createSupabaseBrowserClient();
+    const { error } = await supabase.auth.signUp(signupData);
+    if (error) {
+      toast.error(error.message || "", {
+        duration: 5000,
+        description: `Could not complete sign up`,
+      });
+      return;
+    }
+    toast.success("Finish your sign Up", {
+      duration: 5000,
+      description: `Please verify your email that has been sent to '${signupData.email} to finish sign up process'`,
+    });
   };
 
   return (

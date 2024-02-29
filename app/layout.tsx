@@ -4,6 +4,8 @@ import { NextUIProviders } from "@/components/providers/nextuiProviders";
 import { Navbar, Footer } from "@/components/ui/";
 import clsx from "clsx";
 import { Urbanist } from "next/font/google";
+import { Toaster } from "sonner";
+import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
 
 export const urbanist = Urbanist({
   subsets: ["latin"],
@@ -48,6 +50,21 @@ export default function RootLayout({
         <NextUIProviders
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
         >
+          <Toaster
+            toastOptions={{
+              unstyled: true,
+              classNames: {
+                title: "text-primary font-bold text-lg",
+                toast:
+                  "dark:bg-[#262629] bg-[#f5f5f5] px-4 pt-2 pb-3 shadow-xl rounded-lg dark:text-default flex flex-row justify-center items-center gap-4 border-1 dark:border-[#1e1e21] border-gray",
+                description: "text-sm text-primary",
+              },
+            }}
+            icons={{
+              success: <FaCircleCheck size={24} />,
+              error: <FaCircleExclamation size={24} />,
+            }}
+          />
           <div className="flex flex-col h-full min-h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl py-12 px-6 flex-grow flex flex-col gap-8">
