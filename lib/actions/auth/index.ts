@@ -3,6 +3,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { SignInFormData, SignUpFormData } from "@/lib/types";
 import { type Provider } from "@supabase/supabase-js";
+import { revalidatePath } from "next/cache";
 
 const supabase = createSupabaseServerClient();
 
@@ -11,6 +12,7 @@ export const signUpNewUser = async ({ email, password }: SignUpFormData) => {
     email: email,
     password: password,
   });
+  revalidatePath("/");
   return JSON.stringify({ data, error });
 };
 
@@ -19,6 +21,7 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
     email: email,
     password: password,
   });
+  revalidatePath("/");
   return JSON.stringify({ data, error });
 };
 
@@ -29,5 +32,12 @@ export const socialSignIn = async ({ provider }: { provider: Provider }) => {
       redirectTo: `${process.env.WEBSITE_ORIGIN}/auth/callback`,
     },
   });
+  revalidatePath("/");
   return JSON.stringify({ data, error });
+};
+
+export const signOut = async () => {
+  const { error } = await supabase.auth.signOut();
+  revalidatePath("/");
+  return JSON.stringify({ error });
 };

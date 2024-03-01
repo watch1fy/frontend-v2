@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Checkbox, Link } from "@nextui-org/react";
-import { FormInput, PasswordInput } from "./form-input";
+import { Button, Checkbox } from "@nextui-org/react";
+import { FormEmailInput, PasswordInput } from "./form-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
@@ -29,6 +29,12 @@ function SignInForm() {
         description: `Please verify your email via the email sent to '${signinData.email}' and try again`,
       });
       return;
+    } else if (error?.message && error?.message.length) {
+      toast.error(error.message || "", {
+        duration: 5000,
+        description: `Could not complete signup. Please try again after some time`,
+      });
+      return;
     }
     toast.success("Logged in succesfully", {
       duration: 5000,
@@ -41,7 +47,7 @@ function SignInForm() {
       className="flex flex-col w-full gap-3"
       onSubmit={handleSubmit(signIn)}
     >
-      <FormInput
+      <FormEmailInput
         type="email"
         label="Email"
         placeholder="Enter your email"
@@ -63,9 +69,14 @@ function SignInForm() {
         >
           Remember me
         </Checkbox>
-        <Link color="primary" size="sm">
+        <span
+          className="text-primary-500 cursor-pointer text-sm font-light"
+          onClick={() => {
+            toast.info("Cant do anythig yet hehe");
+          }}
+        >
           Forgot password?
-        </Link>
+        </span>
       </div>
       <Button type="submit" className="my-4" color="primary">
         Sign In

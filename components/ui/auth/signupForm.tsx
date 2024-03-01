@@ -4,7 +4,7 @@ import { SignUpFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema } from "@/lib/schema";
-import { FormInput, PasswordInput } from "./form-input";
+import { FormEmailInput, PasswordInput } from "./form-input";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -34,7 +34,7 @@ function SignUpForm() {
       className="flex flex-col w-full gap-3"
       onSubmit={handleSubmit(signUp)}
     >
-      <FormInput
+      <FormEmailInput
         type="email"
         label="Email"
         placeholder="Enter your email"

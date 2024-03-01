@@ -8,11 +8,11 @@ import {
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import NextLink from "next/link";
-import { ThemeSwitch } from "./theme-switch";
+import { ThemeSwitch } from "../theme-switch";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useDisclosure } from "@nextui-org/react";
-import { AuthModal } from "./auth";
+import { AuthModal } from "../auth";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 
@@ -24,7 +24,7 @@ export type ImageProps = {
 
 export const Navbar = () => {
   return (
-    <NextUINavbar maxWidth="xl" shouldHideOnScroll={false} className="top-0">
+    <NextUINavbar maxWidth="xl" className="top-0">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink
@@ -37,7 +37,7 @@ export const Navbar = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="sm:flex basis-1/5 sm:basis-full" justify="end">
+      <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
           <Link
             target="blank"
@@ -76,7 +76,7 @@ export const SignInButton = () => {
         size="md"
         color="primary"
         variant="flat"
-        onPress={onOpen}
+        onClick={onOpen}
         className="sm:flex hidden"
       >
         Sign In
@@ -85,7 +85,7 @@ export const SignInButton = () => {
         size="sm"
         color="primary"
         variant="flat"
-        onPress={onOpen}
+        onClick={onOpen}
         className="sm:hidden flex"
       >
         Sign In

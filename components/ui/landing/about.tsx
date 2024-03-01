@@ -6,10 +6,12 @@ function About() {
   return (
     <Card className="md:p-2 flex">
       <CardHeader>
-        <p className="text-xl md:text-3xl flex flex-row justify-end items-end">
-          What is watch<span className="text-primary-500 font-semibold">i</span>
+        <span className="text-xl md:text-3xl flex flex-row justify-end items-end">
+          What is watch
+          <p className="text-primary font-semibold">i</p>
+          <p className="text-primary font-semibold rotate-180">i</p>
           fy?
-        </p>
+        </span>
       </CardHeader>
       <CardBody className="hidden md:flex">
         &emsp;&emsp;&emsp;Welcome to Watchify, where we redefine the art of

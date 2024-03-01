@@ -10,16 +10,22 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 const MovieSlides = async () => {
-  const movies_res: any = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}`,
-  ).then((data) => data.json());
+  let movies_res: any;
+  try {
+    movies_res = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}`,
+    ).then((data) => data.json());
+  } catch {}
 
-  const movies: any[] = movies_res.results;
+  const movies: any[] = movies_res?.results;
 
   return (
     <div className="flex flex-col gap-4">
       <span className="text-xl md:text-3xl font-normal pl-6 flex flex-row">
-        Upcoming on watch <p className="text-primary font-semibold">i</p> fy
+        Upcoming on watch
+        <p className="text-primary font-semibold">i</p>
+        <p className="text-primary font-semibold rotate-180">i</p>
+        fy
       </span>
       <ScrollShadow hideScrollBar orientation="horizontal" className="w-full">
         <div className="flex flex-row gap-4 w-fit p-4">

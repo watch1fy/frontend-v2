@@ -6,6 +6,8 @@ import clsx from "clsx";
 import { Urbanist } from "next/font/google";
 import { Toaster } from "sonner";
 import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
+import { NavbarInSession } from "@/components/ui/navbar";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const urbanist = Urbanist({
   subsets: ["latin"],
@@ -33,11 +35,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const supabase = createSupabaseServerClient();
+
+  const { data } = await supabase.auth.getUser();
+  console.log(data?.user);
+
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head />
@@ -66,7 +73,7 @@ export default function RootLayout({
             }}
           />
           <div className="flex flex-col h-full min-h-screen">
-            <Navbar />
+            {data?.user ? <NavbarInSession /> : <Navbar />}
             <main className="container mx-auto max-w-7xl py-12 px-6 flex-grow flex flex-col gap-8">
               {children}
             </main>
