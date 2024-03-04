@@ -24,14 +24,10 @@ export type ImageProps = {
 
 export const Navbar = () => {
   return (
-    <NextUINavbar maxWidth="xl" className="top-0">
+    <NextUINavbar maxWidth="xl" className="top-0 w-full">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink
-            as={"image"}
-            className="flex justify-start items-center gap-1"
-            href="/"
-          >
+          <NextLink href="/">
             <Logo width={180} height={60} />
           </NextLink>
         </NavbarBrand>
@@ -39,11 +35,7 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link
-            target="blank"
-            href={"https://github.com/watch1fy"}
-            as={"image"}
-          >
+          <Link target="blank" href="https://github.com/watch1fy">
             <FaGithub size={20} className="sm:flex hidden" />
           </Link>
           <ThemeSwitch />
@@ -72,22 +64,7 @@ export const SignInButton = () => {
 
   return (
     <>
-      <Button
-        size="md"
-        color="primary"
-        variant="flat"
-        onClick={onOpen}
-        className="sm:flex hidden"
-      >
-        Sign In
-      </Button>
-      <Button
-        size="sm"
-        color="primary"
-        variant="flat"
-        onClick={onOpen}
-        className="sm:hidden flex"
-      >
+      <Button size="md" color="primary" variant="flat" onClick={onOpen}>
         Sign In
       </Button>
       <AuthModal isOpen={isOpen} onOpenChange={onOpenChange} />

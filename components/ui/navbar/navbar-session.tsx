@@ -13,8 +13,10 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { signOut } from "@/lib/actions/auth";
+import { useRouter } from "next/navigation";
+import { routes } from "@/config/route";
 
 export type ImageProps = {
   size?: number;
@@ -27,11 +29,7 @@ export const NavbarInSession = () => {
     <NextUINavbar maxWidth="xl" className="top-0">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink
-            as={"image"}
-            className="flex justify-start items-center gap-1"
-            href="/"
-          >
+          <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo width={180} height={60} />
           </NextLink>
         </NavbarBrand>
@@ -39,11 +37,7 @@ export const NavbarInSession = () => {
 
       <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link
-            target="blank"
-            href={"https://github.com/watch1fy"}
-            as={"image"}
-          >
+          <Link target="blank" href={"https://github.com/watch1fy"}>
             <FaGithub size={20} className="sm:flex hidden" />
           </Link>
           <ThemeSwitch />
@@ -68,9 +62,14 @@ export const Logo: React.FC<ImageProps> = ({ width, height }) => {
 };
 
 export const SignOutButton = () => {
+  const router = useRouter();
   const handleSignOut = async () => {
-    const supabase = createSupabaseBrowserClient();
-    const { error } = await supabase.auth.signOut();
+    const loadingToastId = toast.loading("Signin you out...", {
+      duration: 5000,
+    });
+    const res = await signOut();
+    const { error } = JSON.parse(res);
+    toast.dismiss(loadingToastId);
 
     if (error) {
       toast.error(error.message || "", {
@@ -84,6 +83,8 @@ export const SignOutButton = () => {
       duration: 5000,
       description: `Sign out request was completed successfully`,
     });
+
+    router.push(routes.auth[0]);
   };
 
   return (

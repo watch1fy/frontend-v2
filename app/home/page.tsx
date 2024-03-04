@@ -1,7 +1,13 @@
-import React from "react";
+import { MovieCardSkeletonSlide } from "@/components/skeleton";
+import { MovieSlides } from "@/components/ui";
+import React, { Suspense } from "react";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <Suspense fallback={<MovieCardSkeletonSlide />}>
+      <MovieSlides />
+    </Suspense>
+  );
 }
 
 export default Home;

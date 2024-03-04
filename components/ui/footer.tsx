@@ -2,7 +2,6 @@ import React from "react";
 import FeatureAnchor from "@/components/ui/anchor";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -24,12 +23,6 @@ function Footer() {
             Anmol Sudhir
           </Link>
         </p>
-        <Link
-          target="blank"
-          href={"www.linkedin.com/in/anmol-sudhir-07595a258"}
-        >
-          <FaLinkedin color="gray" />
-        </Link>
       </div>
     </footer>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button, Checkbox } from "@nextui-org/react";
 import { FormEmailInput, PasswordInput } from "./form-input";
@@ -6,17 +8,24 @@ import { SignInFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
 import { SignInSchema } from "@/lib/schema";
 import { toast } from "sonner";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { signInWithEmail } from "@/lib/actions/auth";
+import { useRouter } from "next/navigation";
 
 function SignInForm() {
-  const { control, handleSubmit } = useForm<SignInFormData>({
+  const { control, handleSubmit, formState } = useForm<SignInFormData>({
     resolver: zodResolver(SignInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
+  const router = useRouter();
+
   const signIn = async (signinData: SignInFormData) => {
-    const supabase = createSupabaseBrowserClient();
-    const { data, error } = await supabase.auth.signInWithPassword(signinData);
-    console.log(data, error);
+    const res = await signInWithEmail(signinData);
+    const { error } = JSON.parse(res);
+
     if (error?.message === "Invalid login credentials") {
       toast.error(error.message || "", {
         duration: 5000,
@@ -40,6 +49,7 @@ function SignInForm() {
       duration: 5000,
       description: `You are now logged in as ${signinData.email}`,
     });
+    router.push("/home");
   };
 
   return (
@@ -78,7 +88,12 @@ function SignInForm() {
           Forgot password?
         </span>
       </div>
-      <Button type="submit" className="my-4" color="primary">
+      <Button
+        isLoading={formState.isSubmitting}
+        type="submit"
+        className="my-4"
+        color="primary"
+      >
         Sign In
       </Button>
     </form>
