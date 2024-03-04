@@ -1,20 +1,6 @@
-"use client";
-
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarBrand,
-  NavbarItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import NextLink from "next/link";
-import { ThemeSwitch } from "../theme-switch";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import { useDisclosure } from "@nextui-org/react";
-import { AuthModal } from "../auth";
-import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { NavbarNotInSession } from "./nav";
+import { NavbarInSession } from "./nav-session";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type ImageProps = {
   size?: number;
@@ -22,52 +8,11 @@ export type ImageProps = {
   height: number | undefined;
 };
 
-export const Navbar = () => {
-  return (
-    <NextUINavbar maxWidth="xl" className="top-0 w-full">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink href="/">
-            <Logo width={180} height={60} />
-          </NextLink>
-        </NavbarBrand>
-      </NavbarContent>
+export const Navbar = async () => {
+  const supabase = createSupabaseServerClient()
+  const { data } = await supabase.auth.getSession()
 
-      <NavbarContent className="sm:flex" justify="end">
-        <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link target="blank" href="https://github.com/watch1fy">
-            <FaGithub size={20} className="sm:flex hidden" />
-          </Link>
-          <ThemeSwitch />
-          <SignInButton />
-        </NavbarItem>
-      </NavbarContent>
-    </NextUINavbar>
-  );
-};
-
-export const Logo: React.FC<ImageProps> = ({ width, height }) => {
-  const { theme } = useTheme();
-  return (
-    <Image
-      priority
-      width={width}
-      height={height}
-      alt="logo"
-      src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
-    />
-  );
-};
-
-export const SignInButton = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
-  return (
-    <>
-      <Button size="md" color="primary" variant="flat" onClick={onOpen}>
-        Sign In
-      </Button>
-      <AuthModal isOpen={isOpen} onOpenChange={onOpenChange} />
-    </>
-  );
+  if (!data.session?.user || !data.session)
+    return <NavbarNotInSession />
+  return <NavbarInSession />
 };

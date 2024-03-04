@@ -1,65 +1,39 @@
-"use client";
+"use client"
 
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarBrand,
-  NavbarItem,
-} from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
-import NextLink from "next/link";
-import { ThemeSwitch } from "../theme-switch";
-import { useTheme } from "next-themes";
-import Image from "next/image";
+import { NavbarContent, NavbarBrand, NavbarItem, Navbar } from "@nextui-org/navbar";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { ThemeSwitch } from "../theme-switch";
 import { toast } from "sonner";
 import { signOut } from "@/lib/actions/auth";
 import { useRouter } from "next/navigation";
 import { routes } from "@/config/route";
-
-export type ImageProps = {
-  size?: number;
-  width: number | undefined;
-  height: number | undefined;
-};
+import Logo from "./logo";
 
 export const NavbarInSession = () => {
   return (
-    <NextUINavbar maxWidth="xl" className="top-0">
+    <Navbar maxWidth="xl" className="top-0 w-full">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo width={180} height={60} />
-          </NextLink>
+          <Link href="/">
+            <Logo />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link target="blank" href={"https://github.com/watch1fy"}>
+          <Link target="blank" href="https://github.com/watch1fy">
             <FaGithub size={20} className="sm:flex hidden" />
           </Link>
           <ThemeSwitch />
           <SignOutButton />
         </NavbarItem>
       </NavbarContent>
-    </NextUINavbar>
+    </Navbar>
   );
-};
-
-export const Logo: React.FC<ImageProps> = ({ width, height }) => {
-  const { theme } = useTheme();
-  return (
-    <Image
-      priority
-      width={width}
-      height={height}
-      alt="logo"
-      src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
-    />
-  );
-};
+}
 
 export const SignOutButton = () => {
   const router = useRouter();
@@ -94,16 +68,6 @@ export const SignOutButton = () => {
         color="primary"
         variant="flat"
         onPress={handleSignOut}
-        className="sm:flex hidden"
-      >
-        Sign Out
-      </Button>
-      <Button
-        size="sm"
-        color="primary"
-        variant="flat"
-        onPress={handleSignOut}
-        className="sm:hidden flex"
       >
         Sign Out
       </Button>
