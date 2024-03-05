@@ -1,13 +1,10 @@
 import React from "react";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  ScrollShadow,
-  CardBody,
-} from "@nextui-org/react";
+import { Button, ScrollShadow, Tooltip } from "@nextui-org/react";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
+import clsx from "clsx";
+import { FaPlayCircle } from "react-icons/fa";
+import { BsPlusCircleFill } from "react-icons/bs";
+import { MdFontDownload } from "react-icons/md";
 
 const MovieSlides = async () => {
   let movies_res: any;
@@ -31,15 +28,17 @@ const MovieSlides = async () => {
         fy
       </span>
       <ScrollShadow hideScrollBar orientation="horizontal" className="w-full">
-        <div className="flex flex-row gap-4 w-fit py-4">
+        <div className="flex flex-row gap-6 w-fit py-4">
           {movies?.map((movie) => (
             <MovieCard
               key={movie.id}
               title={movie.title}
               rating={movie.vote_average}
+              backdrop={movie.backdrop_path}
               image={movie.poster_path}
               votes={movie.vote_count}
               desc={movie.overview}
+              adult={movie.adult}
             />
           ))}
         </div>
@@ -51,28 +50,25 @@ const MovieSlides = async () => {
 export const MovieCard = ({
   title,
   image,
-  rating,
-  votes,
+  backdrop,
+  desc,
+  adult,
 }: {
   title: string;
   image: string;
+  backdrop: string;
   rating: number;
   votes: number;
   desc: string;
+  adult: boolean;
 }) => {
   return (
-    <Card
-      radius="lg"
-      className="border-none group flex-grow-0 flex-shrink-0 shadow-none bg-[#eeeeee] dark:bg-[#18181b]"
-    >
-      <CardHeader>
-        <p className="text-xl truncate md:w-48 w-32">{title}</p>
-      </CardHeader>
-      <CardBody className="w-fit h-56 md:h-80">
+    <div className="group rounded-lg transition-colors transition-width border-none flex-grow-0 flex-shrink-0 shadow-none">
+      <div className="w-[148px] md:w-[212px] group-hover:w-[556px] h-56 md:h-80 transition-width">
         <Image
           priority
           alt={`${title} Cover Image`}
-          className="object-cover rounded-lg w-auto h-full"
+          className="object-cover rounded-lg w-auto h-full group-hover:hidden"
           height={200}
           src={
             `https://image.tmdb.org/t/p/original${image}` ||
@@ -80,20 +76,65 @@ export const MovieCard = ({
           }
           width={2000}
         />
-      </CardBody>
-      <CardFooter className="flex flex-row items-center justify-between">
-        <div className="flex flex-row items-start gap-2 justify-center">
-          <FaStar className="my-[2px]" color="#ffbf00" />
-          <div className="flex flex-col justify-start">
-            <div className="flex flex-row justify-end items-end gap-1">
-              {Number(rating).toFixed(1)}
-              <p className="text-sm text-gray-500">/10</p>
+        <div
+          style={{
+            backgroundImage: `url('https://image.tmdb.org/t/p/original${backdrop}`,
+          }}
+          className={clsx(
+            "bg-center bg-no-repeat bg-cover",
+            "rounded-lg group-hover:flex hidden w-full h-full",
+          )}
+        >
+          <div className="p-4 backdrop-brightness-50 w-full h-full flex flex-col justify-between gap-3 text-white">
+            <ScrollShadow
+              className="w-1/2"
+              orientation="vertical"
+              hideScrollBar
+            >
+              <span className="h-full w-full">{desc}</span>
+            </ScrollShadow>
+            <div className="w-full h-fit flex flex-col justify-start gap-2">
+              <span className="flex flex-row justify-start items-center gap-2">
+                <p className="text-4xl">{title}</p>
+                {adult ? (
+                  <Tooltip
+                    className="bg-white text-black"
+                    content="Rated 18+"
+                    delay={0}
+                    closeDelay={0}
+                  >
+                    <MdFontDownload size={14} />
+                  </Tooltip>
+                ) : null}
+              </span>
+              <div className="w-full flex flex-row justify-between">
+                <Button
+                  className="p-0 bg-transparent border-none hover:scale-110 rounded-full h-fit w-fit"
+                  isIconOnly
+                  variant="faded"
+                >
+                  <FaPlayCircle color="white" size={48} />
+                </Button>
+                <Tooltip
+                  className="bg-white text-black"
+                  content={"Add to watchlist"}
+                  delay={0}
+                  closeDelay={0}
+                >
+                  <Button
+                    className="p-0 bg-transparent border-none hover:scale-110 rounded-full h-fit w-fit"
+                    isIconOnly
+                    variant="faded"
+                  >
+                    <BsPlusCircleFill color="white" size={46} />
+                  </Button>
+                </Tooltip>
+              </div>
             </div>
-            <p className="text-sm text-gray-500">{votes}</p>
           </div>
         </div>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

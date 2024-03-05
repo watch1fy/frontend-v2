@@ -1,9 +1,10 @@
 import { Features, Hero, About, CTA, MovieSlides } from "./landing";
 import FeatureAnchor from "./anchor";
 import Footer from "./footer";
-import { Navbar } from "./navbar/navbar";
 import { AuthModal } from "./auth";
 import { ThemeSwitch } from "./theme-switch";
+import Toast from "./toast";
+import { Navbar } from "./navbar";
 
 export {
   Features,
@@ -13,7 +14,8 @@ export {
   MovieSlides,
   FeatureAnchor,
   Footer,
-  Navbar,
   AuthModal,
   ThemeSwitch,
+  Toast,
+  Navbar,
 };

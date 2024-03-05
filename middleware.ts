@@ -25,8 +25,6 @@ export async function middleware(request: NextRequest) {
     if (data?.user) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = routes.protected[0];
-      redirectUrl.searchParams.set("user_already_authenticated", "true");
-      redirectUrl.searchParams.set("redirectedFrom", request.nextUrl.pathname);
       return NextResponse.redirect(redirectUrl);
     } else {
       return response;

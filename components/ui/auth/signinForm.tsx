@@ -10,6 +10,7 @@ import { SignInSchema } from "@/lib/schema";
 import { toast } from "sonner";
 import { signInWithEmail } from "@/lib/actions/auth";
 import { useRouter } from "next/navigation";
+import { routes } from "@/config/route";
 
 function SignInForm() {
   const { control, handleSubmit, formState } = useForm<SignInFormData>({
@@ -49,7 +50,8 @@ function SignInForm() {
       duration: 5000,
       description: `You are now logged in as ${signinData.email}`,
     });
-    router.push("/home");
+
+    router.push(routes.protected[0]);
   };
 
   return (

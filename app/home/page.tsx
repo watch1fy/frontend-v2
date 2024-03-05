@@ -4,9 +4,20 @@ import React, { Suspense } from "react";
 
 function Home() {
   return (
-    <Suspense fallback={<MovieCardSkeletonSlide />}>
-      <MovieSlides />
-    </Suspense>
+    <>
+      <Suspense fallback={<MovieCardSkeletonSlide />}>
+        <MovieSlides />
+      </Suspense>
+      <Suspense fallback={<MovieCardSkeletonSlide />}>
+        <MovieSlides />
+      </Suspense>
+      <Suspense fallback={<MovieCardSkeletonSlide />}>
+        <MovieSlides />
+      </Suspense>
+      <Suspense fallback={<MovieCardSkeletonSlide />}>
+        <MovieSlides />
+      </Suspense>
+    </>
   );
 }
 

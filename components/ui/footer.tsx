@@ -1,13 +1,11 @@
 import React from "react";
-import FeatureAnchor from "@/components/ui/anchor";
 import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
   return (
     <footer className="w-full flex flex-col gap-4 items-center justify-center px-6 py-2 dark:bg-[#18181b] bg-[#eeeeee]">
-      <div className="w-full flex flex-row items-center justify-between">
-        <FeatureAnchor />
+      <div className="w-full flex flex-row items-center justify-center">
         <Link href={"/"}>
           <Image src={"/logofinal.svg"} alt="logo" height={48} width={48} />
         </Link>
