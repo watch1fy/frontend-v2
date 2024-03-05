@@ -9,10 +9,9 @@ export type ImageProps = {
 };
 
 export const Navbar = async () => {
-  const supabase = createSupabaseServerClient()
-  const { data } = await supabase.auth.getSession()
+  const supabase = createSupabaseServerClient();
+  const { data } = await supabase.auth.getSession();
 
-  if (!data.session?.user || !data.session)
-    return <NavbarNotInSession />
-  return <NavbarInSession />
+  if (!data.session?.user || !data.session) return <NavbarNotInSession />;
+  return <NavbarInSession user={data.session?.user} />;
 };

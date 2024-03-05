@@ -1,27 +1,38 @@
-"use client"
-import { useTheme } from 'next-themes'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+"use client";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Logo = () => {
   const [mounted, setMounted] = useState<boolean>();
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
-    <Image
-      priority
-      width={180}
-      height={60}
-      alt="logo"
-      src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
-    />
-  )
-}
+    <>
+      <Image
+        priority
+        width={120}
+        height={40}
+        alt="logo"
+        className="lg:block hidden"
+        src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
+      />
+      <Image
+        priority
+        width={105}
+        height={35}
+        alt="logo"
+        className="lg:hidden"
+        src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
+      />
+    </>
+  );
+};
 
-export default Logo
+export default Logo;
