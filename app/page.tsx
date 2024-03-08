@@ -7,7 +7,7 @@ export default async function Home() {
     <>
       <Hero />
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides />
+        <MovieSlides sectionTitle="Popular" />
       </Suspense>
       <CTA />
       <About />

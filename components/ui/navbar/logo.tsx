@@ -11,7 +11,17 @@ const Logo = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted)
+    return (
+      <Image
+        priority
+        width={35}
+        height={35}
+        alt="logo"
+        className="lg:block hidden"
+        src="/logofinal.svg"
+      />
+    );
 
   return (
     <>

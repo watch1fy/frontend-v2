@@ -40,11 +40,11 @@ export const NavbarMenuFull = () => {
 export const MenuHome = () => {
   return (
     <Dropdown className="min-w-0 w-fit">
-      <NavbarItem>
+      <NavbarItem isActive>
         <DropdownTrigger>
           <Button
             disableRipple
-            className="bg-transparent hover:bg-transparent  px-2 py-0 w-fit"
+            className="bg-transparent data-[hover=true]:bg-transparent data-[hover=true]:text-gray-500  px-2 py-0 w-fit"
             radius="sm"
             size="lg"
             endContent={<FaAngleDown />}
@@ -54,7 +54,7 @@ export const MenuHome = () => {
           </Button>
         </DropdownTrigger>
       </NavbarItem>
-      <DropdownMenu aria-label="Home">
+      <DropdownMenu variant="flat" aria-label="Home">
         <DropdownItem key="all">All</DropdownItem>
         <DropdownItem key="movies">Movies</DropdownItem>
         <DropdownItem key="tv">TV Shows</DropdownItem>
@@ -70,7 +70,7 @@ export const MenuCategories = () => {
         <DropdownTrigger>
           <Button
             disableRipple
-            className="bg-transparent hover:bg-transparent px-2 py-0 w-fit"
+            className="bg-transparent data-[hover=true]:bg-transparent px-2 py-0 w-fit"
             radius="sm"
             size="lg"
             endContent={<FaAngleDown />}
@@ -81,6 +81,7 @@ export const MenuCategories = () => {
         </DropdownTrigger>
       </NavbarItem>
       <DropdownMenu
+        variant="flat"
         aria-label="Home"
         itemClasses={{
           base: "gap-4",
@@ -98,7 +99,7 @@ export const MenuWatchlist = () => {
   return (
     <Button
       disableRipple
-      className="bg-transparent hover:bg-transparent px-2 py-0 w-fit"
+      className="bg-transparent data-[hover=true]:bg-transparent px-2 py-0 w-fit"
       radius="sm"
       size="lg"
       variant="light"

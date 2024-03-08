@@ -19,3 +19,13 @@ export type FormFieldProps = {
   type: string;
   control: Control<any, any>;
 } & InputProps;
+
+export type MovieCardProps = {
+  title: string;
+  image: string;
+  backdrop: string;
+  rating: number;
+  votes: number;
+  desc: string;
+  adult: boolean;
+}

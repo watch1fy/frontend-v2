@@ -20,6 +20,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Input,
+  DropdownSection,
 } from "@nextui-org/react";
 import { User } from "@supabase/supabase-js";
 import { IoSearch } from "react-icons/io5";
@@ -84,9 +85,9 @@ export const NavbarInSession = ({ user }: { user: User }) => {
             mainWrapper: "h-full",
             input: "text-small",
             inputWrapper:
-              "h-full font-normal text-default-500 rounded-full border-[1px] dark:border-none",
+              "h-full font-normal text-default-500 rounded-full",
           }}
-          className="sm:flex hidden"
+          className="sm:flex hidden shadow-none"
           placeholder="Type to search..."
           size="sm"
           startContent={
@@ -109,15 +110,17 @@ export const NavbarInSession = ({ user }: { user: User }) => {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold text-primary">
-                {user.user_metadata?.custom_claims.global_name ||
-                  user.user_metadata?.full_name}
-              </p>
-              <p className="text-sm text-gray-500 font-light">
-                {user.user_metadata?.email}
-              </p>
-            </DropdownItem>
+            <DropdownSection title="Profile" showDivider>
+              <DropdownItem key="profile" className="h-14 gap-2">
+                <p className="font-semibold text-primary">
+                  {user.user_metadata?.custom_claims.global_name ||
+                    user.user_metadata?.full_name}
+                </p>
+                <p className="text-sm text-gray-500 font-light">
+                  {user.user_metadata?.email}
+                </p>
+              </DropdownItem>
+            </DropdownSection>
             <DropdownItem key="settings">Settings</DropdownItem>
             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
             <DropdownItem key="logout" color="danger" onClick={handleSignOut}>
