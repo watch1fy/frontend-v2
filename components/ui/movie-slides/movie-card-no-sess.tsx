@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react'
 import Image from "next/image";
 import { MovieCardProps } from "@/lib/types";
 
-export const MovieCardTab = ({
+const MovieCardNotInSession = ({
   title,
   image,
 }: MovieCardProps) => {
   return (
-    <div className="rounded-lg flex-grow-0 flex-shrink-0">
-      <div className="w-[148px] h-56 transition-height">
+    <div className="group rounded-lg flex-grow-0 flex-shrink-0">
+      <div className="w-[148px] h-56 transition-height group-hover:scale-115">
         <Image
           priority
           alt={`${title} Cover Image`}
@@ -20,10 +20,9 @@ export const MovieCardTab = ({
           }
           width={2000}
         />
-
       </div>
     </div>
   );
 };
 
-export default MovieCardTab;
+export default MovieCardNotInSession

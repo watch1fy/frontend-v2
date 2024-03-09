@@ -1,24 +1,26 @@
 "use client";
-import { useIsTablet } from '@/lib/hooks';
+
 import React from 'react'
-import MovieCardTab from './movie-card-tab';
 import MovieCard from './movie-card';
+import PopularMovieCard from './popular-movie-card';
 import { MovieCardProps } from '@/lib/types';
 
 function Card({
+  rank,
   title,
   votes,
   backdrop,
   image,
   rating,
   desc,
-  adult
+  adult,
+  isPopular
 }: MovieCardProps) {
-  const isTab = useIsTablet()
 
-  if (isTab)
+  if (isPopular)
     return (
-      <MovieCardTab
+      <PopularMovieCard
+        rank={rank}
         title={title}
         rating={rating}
         backdrop={backdrop}

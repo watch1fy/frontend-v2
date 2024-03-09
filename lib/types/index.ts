@@ -21,6 +21,9 @@ export type FormFieldProps = {
 } & InputProps;
 
 export type MovieCardProps = {
+  isPopular?: boolean;
+  subtext?: string;
+  rank?: number;
   title: string;
   image: string;
   backdrop: string;

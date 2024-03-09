@@ -6,18 +6,18 @@ import React, { Suspense } from "react";
 function Home() {
   return (
     <>
-      <HeroSlide sectionTitle="Popular movies right now" />
+      <HeroSlide />
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides sectionTitle="Popular Movies" />
+        <MovieSlides categoryType="popular-movie" isPopular sectionTitle="Popular Movies" />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides sectionTitle="Popular Movies" />
+        <MovieSlides categoryType="popular-tv" isPopular sectionTitle="Popular TV Shows" />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides sectionTitle="Popular Movies" />
+        <MovieSlides categoryType="popular-movie" sectionTitle="Popular Movies" />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides sectionTitle="Popular Movies" />
+        <MovieSlides categoryType="popular-tv" sectionTitle="Popular Movies" />
       </Suspense>
     </>
   );

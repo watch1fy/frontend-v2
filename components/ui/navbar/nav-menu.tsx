@@ -44,7 +44,7 @@ export const MenuHome = () => {
         <DropdownTrigger>
           <Button
             disableRipple
-            className="bg-transparent data-[hover=true]:bg-transparent data-[hover=true]:text-gray-500  px-2 py-0 w-fit"
+            className="bg-transparent data-[hover=true]:bg-transparent data-[hover=true]:text-zinc-400  px-2 py-0 w-fit"
             radius="sm"
             size="lg"
             endContent={<FaAngleDown />}
@@ -70,7 +70,7 @@ export const MenuCategories = () => {
         <DropdownTrigger>
           <Button
             disableRipple
-            className="bg-transparent data-[hover=true]:bg-transparent px-2 py-0 w-fit"
+            className="bg-transparent data-[hover=true]:bg-transparent data-[hover=true]:text-zinc-400 px-2 py-0 w-fit"
             radius="sm"
             size="lg"
             endContent={<FaAngleDown />}
@@ -99,7 +99,7 @@ export const MenuWatchlist = () => {
   return (
     <Button
       disableRipple
-      className="bg-transparent data-[hover=true]:bg-transparent px-2 py-0 w-fit"
+      className="bg-transparent data-[hover=true]:bg-transparent data-[hover=true]:text-zinc-400 px-2 py-0 w-fit"
       radius="sm"
       size="lg"
       variant="light"

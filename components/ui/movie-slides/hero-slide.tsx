@@ -6,7 +6,7 @@ import { BsBadgeHdFill, BsPlusCircleFill } from "react-icons/bs";
 import { Button, Pagination, ScrollShadow, Tooltip } from '@nextui-org/react';
 import { MdArrowForward } from 'react-icons/md';
 
-const HeroSlide = async ({ sectionTitle, key = 'popular' }: { sectionTitle: string, key?: string }) => {
+const HeroSlide = async () => {
   const movies = await getAllTrending()
 
   return (
