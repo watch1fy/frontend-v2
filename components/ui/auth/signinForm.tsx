@@ -1,22 +1,32 @@
+"use client";
+
 import React from "react";
-import { Button, Checkbox, Link } from "@nextui-org/react";
-import { FormInput, PasswordInput } from "./form-input";
+import { Button, Checkbox } from "@nextui-org/react";
+import { FormEmailInput, PasswordInput } from "./form-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
 import { SignInSchema } from "@/lib/schema";
 import { toast } from "sonner";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { signInWithEmail } from "@/lib/actions/auth";
+import { useRouter } from "next/navigation";
+import { routes } from "@/config/route";
 
 function SignInForm() {
-  const { control, handleSubmit } = useForm<SignInFormData>({
+  const { control, handleSubmit, formState } = useForm<SignInFormData>({
     resolver: zodResolver(SignInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
+  const router = useRouter();
+
   const signIn = async (signinData: SignInFormData) => {
-    const supabase = createSupabaseBrowserClient();
-    const { data, error } = await supabase.auth.signInWithPassword(signinData);
-    console.log(data, error);
+    const res = await signInWithEmail(signinData);
+    const { error } = JSON.parse(res);
+
     if (error?.message === "Invalid login credentials") {
       toast.error(error.message || "", {
         duration: 5000,
@@ -29,11 +39,19 @@ function SignInForm() {
         description: `Please verify your email via the email sent to '${signinData.email}' and try again`,
       });
       return;
+    } else if (error?.message && error?.message.length) {
+      toast.error(error.message || "", {
+        duration: 5000,
+        description: `Could not complete signup. Please try again after some time`,
+      });
+      return;
     }
     toast.success("Logged in succesfully", {
       duration: 5000,
       description: `You are now logged in as ${signinData.email}`,
     });
+
+    router.push(routes.protected[0]);
   };
 
   return (
@@ -41,7 +59,7 @@ function SignInForm() {
       className="flex flex-col w-full gap-3"
       onSubmit={handleSubmit(signIn)}
     >
-      <FormInput
+      <FormEmailInput
         type="email"
         label="Email"
         placeholder="Enter your email"
@@ -63,11 +81,21 @@ function SignInForm() {
         >
           Remember me
         </Checkbox>
-        <Link color="primary" size="sm">
+        <span
+          className="text-primary-500 cursor-pointer text-sm font-light"
+          onClick={() => {
+            toast.info("Cant do anythig yet hehe");
+          }}
+        >
           Forgot password?
-        </Link>
+        </span>
       </div>
-      <Button type="submit" className="my-4" color="primary">
+      <Button
+        isLoading={formState.isSubmitting}
+        type="submit"
+        className="my-4"
+        color="primary"
+      >
         Sign In
       </Button>
     </form>

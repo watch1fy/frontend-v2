@@ -1,13 +1,14 @@
-import { About, CTA, Features, Hero, MovieSlides } from "@/components/ui/";
+import { About, CTA, Features, Hero } from "@/components/ui/";
 import { MovieCardSkeletonSlide } from "@/components/skeleton";
 import { Suspense } from "react";
+import { MovieSlidesNotInSession } from "@/components/ui/";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Hero />
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides />
+        <MovieSlidesNotInSession sectionTitle="Popular" />
       </Suspense>
       <CTA />
       <About />

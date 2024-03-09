@@ -5,7 +5,7 @@ import { Controller } from "react-hook-form";
 import { MdEmail } from "react-icons/md";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-export const FormInput: React.FC<FormFieldProps> = ({
+export const FormEmailInput: React.FC<FormFieldProps> = ({
   name,
   type,
   label,
@@ -17,11 +17,12 @@ export const FormInput: React.FC<FormFieldProps> = ({
     <Controller
       name={name}
       control={control}
+      rules={{ required: true }}
       render={({ field, formState }) => {
         return (
           <Input
             endContent={type === "email" && <MdEmail />}
-            type={type}
+            type={"text"}
             label={label}
             placeholder={placeholder}
             isInvalid={!!formState.errors?.[name]}
@@ -50,6 +51,7 @@ export const PasswordInput: React.FC<FormFieldProps> = ({
     <Controller
       name={name}
       control={control}
+      rules={{ required: true }}
       render={({ field, formState }) => {
         return (
           <Input

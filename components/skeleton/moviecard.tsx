@@ -2,15 +2,11 @@ import { Card, ScrollShadow, Skeleton, CardBody } from "@nextui-org/react";
 
 export const MovieCardSkeletonSlide = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <span className="text-xl md:text-3xl font-normal pl-6 flex flex-row">
+    <section className="flex flex-col gap-4">
+      <span className="text-2xl md:text-3xl font-normal pl-6 flex flex-row">
         Upcoming on watch <p className="text-primary font-semibold">i</p> fy
       </span>
-      <ScrollShadow
-        hideScrollBar
-        orientation="horizontal"
-        className="w- pl-4 pb-4"
-      >
+      <ScrollShadow hideScrollBar orientation="horizontal" className="w-full">
         <div className="flex flex-row gap-4 w-fit">
           <MovieCardSkeleton />
           <MovieCardSkeleton />
@@ -23,7 +19,7 @@ export const MovieCardSkeletonSlide = () => {
           <MovieCardSkeleton />
         </div>
       </ScrollShadow>
-    </div>
+    </section>
   );
 };
 

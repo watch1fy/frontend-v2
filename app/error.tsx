@@ -1,8 +1,10 @@
 "use client";
 
+import { Button } from "@nextui-org/button";
 import { useEffect } from "react";
+import { FaCircleExclamation } from "react-icons/fa6";
 
-export default function Error({
+export default function Errorr({
   error,
   reset,
 }: {
@@ -15,16 +17,22 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button
+    <div className="w-full h-full flex justify-center items-center flex-col gap-6">
+      <div className="flex flex-row gap-4 justify-center items-center">
+        <FaCircleExclamation size={24} />
+        <p className="text-2xl">Something went wrong</p>
+      </div>
+      <Button
+        variant="flat"
+        color="primary"
+        size="lg"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
       >
         Try again
-      </button>
+      </Button>
     </div>
   );
 }

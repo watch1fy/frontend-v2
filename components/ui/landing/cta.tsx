@@ -11,7 +11,7 @@ function CTA() {
       <Divider className="mb-8" />
       <div className="flex flex-col gap-2 items-center">
         <div className="flex flex-row gap-4 justify-between w-full items-start">
-          <p className="text-xl md:text-3xl font-medium">Join Watchify Now!</p>
+          <p className="text-2xl md:text-3xl font-medium">Join Watchify Now!</p>
           <Button
             color="primary"
             variant="ghost"

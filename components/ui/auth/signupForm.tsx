@@ -1,21 +1,28 @@
+"use client";
+
 import React from "react";
 import { Button } from "@nextui-org/react";
 import { SignUpFormData } from "@/lib/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpSchema } from "@/lib/schema";
-import { FormInput, PasswordInput } from "./form-input";
+import { FormEmailInput, PasswordInput } from "./form-input";
 import { toast } from "sonner";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { signUpNewUser } from "@/lib/actions/auth";
 
 function SignUpForm() {
-  const { control, handleSubmit } = useForm<SignUpFormData>({
+  const { control, handleSubmit, formState } = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
   const signUp = async (signupData: SignUpFormData) => {
-    const supabase = createSupabaseBrowserClient();
-    const { error } = await supabase.auth.signUp(signupData);
+    const res = await signUpNewUser(signupData);
+    const { error } = JSON.parse(res);
     if (error) {
       toast.error(error.message || "", {
         duration: 5000,
@@ -34,7 +41,7 @@ function SignUpForm() {
       className="flex flex-col w-full gap-3"
       onSubmit={handleSubmit(signUp)}
     >
-      <FormInput
+      <FormEmailInput
         type="email"
         label="Email"
         placeholder="Enter your email"
@@ -55,7 +62,12 @@ function SignUpForm() {
         name="confirmPassword"
         control={control}
       />
-      <Button type="submit" className="my-4" color="primary">
+      <Button
+        isLoading={formState.isSubmitting}
+        type="submit"
+        className="my-4"
+        color="primary"
+      >
         Sign Up
       </Button>
     </form>

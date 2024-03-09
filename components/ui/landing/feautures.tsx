@@ -8,9 +8,9 @@ import { MdArrowForward } from "react-icons/md";
 
 function Features() {
   return (
-    <div className="flex flex-col justify-start gap-4">
-      <p className="text-xl md:text-3xl font-normal pl-6">Features</p>
-      <Accordion selectionMode="multiple" variant="splitted">
+    <section className="flex flex-col justify-start gap-2">
+      <p className="text-2xl md:text-3xl font-normal">Features</p>
+      <Accordion selectionMode="multiple" className="p-0">
         {features?.map((feature, idx) => (
           <AccordionItem
             className=" text-gray-500 dark:text-gray-400"
@@ -47,7 +47,7 @@ function Features() {
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
+    </section>
   );
 }
 
