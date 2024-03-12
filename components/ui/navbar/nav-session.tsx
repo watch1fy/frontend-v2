@@ -58,7 +58,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
   return (
     <Navbar
       maxWidth="xl"
-      className="top-0 w-full"
+      className="top-0 w-full backdrop-blur-2xl bg-zinc-700 bg-opacity-5"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
@@ -84,8 +84,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
             base: "max-w-full sm:max-w-[12rem] h-9",
             mainWrapper: "h-full",
             input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 rounded-full",
+            inputWrapper: "h-full font-normal text-default-500 rounded-full",
           }}
           className="sm:flex hidden shadow-none"
           placeholder="Type to search..."

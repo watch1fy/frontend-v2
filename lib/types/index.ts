@@ -31,4 +31,4 @@ export type MovieCardProps = {
   votes: number;
   desc: string;
   adult: boolean;
-}
+};

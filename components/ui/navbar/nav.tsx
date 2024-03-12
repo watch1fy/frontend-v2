@@ -17,7 +17,10 @@ export const NavbarNotInSession = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <Navbar maxWidth="xl" className="top-0 w-full">
+    <Navbar
+      maxWidth="xl"
+      className="top-0 w-full backdrop-blur-2xl bg-zinc-700 bg-opacity-5"
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <Link href="/">

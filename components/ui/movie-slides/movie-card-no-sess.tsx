@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 import { MovieCardProps } from "@/lib/types";
 
-const MovieCardNotInSession = ({
-  title,
-  image,
-}: MovieCardProps) => {
+const MovieCardNotInSession = ({ title, image }: MovieCardProps) => {
   return (
     <div className="group rounded-lg flex-grow-0 flex-shrink-0">
       <div className="w-[148px] h-56 transition-height group-hover:scale-115">
@@ -25,4 +22,4 @@ const MovieCardNotInSession = ({
   );
 };
 
-export default MovieCardNotInSession
+export default MovieCardNotInSession;

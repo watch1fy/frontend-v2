@@ -20,5 +20,5 @@ export {
   ThemeSwitch,
   Toast,
   Navbar,
-  MovieSlidesNotInSession
+  MovieSlidesNotInSession,
 };

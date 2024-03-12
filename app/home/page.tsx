@@ -8,16 +8,30 @@ function Home() {
     <>
       <HeroSlide />
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides categoryType="popular-movie" isPopular sectionTitle="Popular Movies" />
+        <MovieSlides
+          categoryType="popular-movie"
+          isPopular
+          sectionTitle="Popular Movies"
+        />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides categoryType="popular-tv" isPopular sectionTitle="Popular TV Shows" />
+        <MovieSlides
+          categoryType="popular-tv"
+          isPopular
+          sectionTitle="Popular TV Shows"
+        />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides categoryType="popular-movie" sectionTitle="Popular Movies" />
+        <MovieSlides
+          categoryType="popular-movie"
+          sectionTitle="Popular Movies"
+        />
       </Suspense>
       <Suspense fallback={<MovieCardSkeletonSlide />}>
-        <MovieSlides categoryType="popular-tv" sectionTitle="Popular Movies" />
+        <MovieSlides
+          categoryType="popular-tv"
+          sectionTitle="Popular TV Shows"
+        />
       </Suspense>
     </>
   );

@@ -7,12 +7,12 @@ export const getPopularMovies = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
   return movies;
-}
+};
 
 export const getPopularTv = async () => {
   let movies_res: any;
@@ -23,12 +23,12 @@ export const getPopularTv = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
   return movies;
-}
+};
 
 export const getAllTrending = async () => {
   let movies_res: any;
@@ -39,9 +39,9 @@ export const getAllTrending = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
   return movies;
-}
+};
