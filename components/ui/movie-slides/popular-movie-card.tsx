@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import clsx from "clsx";
-import { FaClock, FaPlayCircle } from "react-icons/fa";
+import { FaPlayCircle } from "react-icons/fa";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { MdFontDownload } from "react-icons/md";
 import { MovieCardProps } from "@/lib/types";
@@ -15,13 +15,9 @@ export const PopularMovieCard = ({
   adult,
 }: MovieCardProps) => {
   return (
-    <div className="group rounded-lg transition-colors transition-width border-none flex-grow-0 flex-shrink-0 shadow-none flex flex-row items-end gap-2 pl-4">
-      <span className="text-2xl font-semibold group-hover:scale-125 transition-transform">
-        {
-          rank < 10
-            ? `0${rank + 1}`
-            : rank + 1
-        }
+    <div className="group rounded-lg transition-colors transition-width border-none flex-grow-0 flex-shrink-0 shadow-none flex flex-row items-end gap-4 pl-4">
+      <span className="text-2xl font-semibold group-hover:scale-150 transition-transform">
+        {rank < 10 ? `0${rank + 1}` : rank + 1}
       </span>
       <div className="w-[212px] group-hover:w-[559px] h-80 transition-width">
         <Image
@@ -45,13 +41,11 @@ export const PopularMovieCard = ({
           )}
         >
           <div className="p-4 backdrop-brightness-50 w-full h-full flex flex-col justify-end gap-[-12] text-white">
-            <div className="text-sm flex flex-row items-center gap-1">
-              <FaClock />
-              2h 13m
-            </div>
             <div className="w-full h-fit flex flex-col justify-start gap-2">
               <span className="flex flex-row justify-start items-center gap-2">
-                <p className="text-4xl">{title}</p>
+                <p className="text-4xl w-full text-ellipsis overflow-hidden whitespace-nowrap">
+                  {title}
+                </p>
                 {adult ? (
                   <Tooltip
                     className="bg-white text-black"

@@ -32,9 +32,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
 
   const router = useRouter();
   const handleSignOut = async () => {
-    const loadingToastId = toast.loading("Signin you out...", {
-      duration: 5000,
-    });
+    const loadingToastId = toast.loading("Signin you out...");
     const res = await signOut();
     const { error } = JSON.parse(res);
     toast.dismiss(loadingToastId);
@@ -58,7 +56,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
   return (
     <Navbar
       maxWidth="xl"
-      className="top-0 w-full"
+      className="top-0 w-full backdrop-blur-2xl bg-zinc-700 bg-opacity-5"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
@@ -84,8 +82,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
             base: "max-w-full sm:max-w-[12rem] h-9",
             mainWrapper: "h-full",
             input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 rounded-full",
+            inputWrapper: "h-full font-normal text-default-500 rounded-full",
           }}
           className="sm:flex hidden shadow-none"
           placeholder="Type to search..."
@@ -97,7 +94,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
           type="search"
           color="default"
         />
-        <Dropdown placement="bottom-end">
+        <Dropdown backdrop="blur" placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               as="button"
