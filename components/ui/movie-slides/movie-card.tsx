@@ -7,11 +7,11 @@ import { Tooltip } from "@nextui-org/react";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdFontDownload } from "react-icons/md";
 
-export const MovieCard = ({ adult, title, image }: MovieCardProps) => {
+export const MovieCard = ({ adult, title, image, isFirst, isLast }: MovieCardProps) => {
   return (
     <div className="group rounded-lg flex-grow-0 flex-shrink-0">
       <div
-        className={`w-[148px] h-56 transition-height group-hover:scale-110 transition-transform`}
+        className={`w-[148px] h-56 transition-height group-hover:scale-110 ${isFirst && "group-hover:translate-x-2"} ${isLast && "group-hover:-translate-x-2"} transition-transform`}
       >
         <Image
           priority
@@ -32,7 +32,7 @@ export const MovieCard = ({ adult, title, image }: MovieCardProps) => {
         >
           <div className="w-full h-full backdrop-brightness-50 hidden group-hover:flex flex-col gap-2 p-2 justify-end">
             <span className="flex flex-row justify-start items-center gap-2">
-              <p className="text-xl">{title}</p>
+              <p className="text-xl text-white">{title}</p>
               {adult ? (
                 <Tooltip
                   className="bg-white text-black"

@@ -7,6 +7,7 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import PopularMovieCard from "./popular-movie-card";
 import MovieCard from "./movie-card";
+import { useIsTablet } from "@/lib/hooks";
 
 const slidesVarients: Variants = {
   hide: {
@@ -32,9 +33,11 @@ const SlidesContainer = ({
   key?: string;
   isPopular?: boolean;
   desc?: string;
-  categoryType: "popular-tv" | "popular-movie";
+  categoryType: "popular-tv" | "popular-movie" | "top-movies" | "top-tv";
   movies: any[];
 }) => {
+
+  const isTab = useIsTablet()
   return (
     <motion.section
       initial="hide"
@@ -42,24 +45,24 @@ const SlidesContainer = ({
       variants={slidesVarients}
       className={clsx(
         "flex gap-2 justify-between",
-        isPopular ? "flex-row" : "flex-col",
+        isPopular && !isTab ? "flex-row" : "flex-col",
       )}
     >
       <div
         className={clsx(
           "font-normal flex flex-col w-48 justify-between",
-          isPopular && "pb-4 pt-1",
+          isPopular && !isTab ? "pb-4 pt-1" : "w-fit",
         )}
       >
         <span className="p-0 text-2xl flex flex-col gap-2">
           {sectionTitle}
-          {isPopular ? (
+          {isPopular && !isTab ? (
             <div className="text-zinc-400 text-sm">
               {`Watch ${categoryType === "popular-movie" ? "movies" : "TV shows"} that are most popular this week.`}
             </div>
           ) : null}
         </span>
-        {isPopular ? (
+        {isPopular && !isTab ? (
           <div className="flex flex-col gap-2 justify-start">
             <Button
               endContent={<FaArrowRight />}
@@ -73,16 +76,15 @@ const SlidesContainer = ({
         ) : null}
       </div>
       <ScrollShadow hideScrollBar orientation="horizontal" className="w-full">
-        <div className="flex flex-row gap-6 w-fit py-4">
+        <div className="flex flex-row gap-8 w-fit py-4">
           {movies?.map((movie, idx) => {
-            if (isPopular)
+            if (isPopular && !isTab)
               return (
                 <PopularMovieCard
                   rank={idx}
                   key={movie.id}
-                  title={
-                    categoryType === "popular-tv" ? movie.name : movie.title
-                  }
+                  id={movie.id}
+                  title={movie.name || movie.title}
                   rating={movie.vote_average}
                   backdrop={movie.backdrop_path}
                   image={movie.poster_path}
@@ -93,8 +95,11 @@ const SlidesContainer = ({
               );
             return (
               <MovieCard
+                isFirst={idx === 0}
+                isLast={idx === movies?.length - 1}
                 key={movie.id}
-                title={categoryType === "popular-tv" ? movie.name : movie.title}
+                id={movie.id}
+                title={movie.name || movie.title}
                 rating={movie.vote_average}
                 backdrop={movie.backdrop_path}
                 image={movie.poster_path}

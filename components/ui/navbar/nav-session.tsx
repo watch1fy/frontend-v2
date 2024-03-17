@@ -32,9 +32,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
 
   const router = useRouter();
   const handleSignOut = async () => {
-    const loadingToastId = toast.loading("Signin you out...", {
-      duration: 5000,
-    });
+    const loadingToastId = toast.loading("Signin you out...");
     const res = await signOut();
     const { error } = JSON.parse(res);
     toast.dismiss(loadingToastId);
@@ -96,7 +94,7 @@ export const NavbarInSession = ({ user }: { user: User }) => {
           type="search"
           color="default"
         />
-        <Dropdown placement="bottom-end">
+        <Dropdown backdrop="blur" placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               as="button"

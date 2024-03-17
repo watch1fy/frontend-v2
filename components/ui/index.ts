@@ -7,6 +7,7 @@ import Toast from "./toast";
 import { Navbar } from "./navbar";
 import { MovieSlides } from "./movie-slides";
 import { MovieSlidesNotInSession } from "./movie-slides";
+import LoadingPage from "./loading-page";
 
 export {
   Features,
@@ -21,4 +22,5 @@ export {
   Toast,
   Navbar,
   MovieSlidesNotInSession,
+  LoadingPage
 };

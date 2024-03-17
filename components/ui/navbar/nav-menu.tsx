@@ -39,7 +39,7 @@ export const NavbarMenuFull = () => {
 
 export const MenuHome = () => {
   return (
-    <Dropdown className="min-w-0 w-fit">
+    <Dropdown backdrop="blur" className="min-w-0 w-fit">
       <NavbarItem isActive>
         <DropdownTrigger>
           <Button
@@ -65,7 +65,7 @@ export const MenuHome = () => {
 
 export const MenuCategories = () => {
   return (
-    <Dropdown className="min-w-0 w-fit">
+    <Dropdown backdrop="blur" className="min-w-0 w-fit">
       <NavbarItem>
         <DropdownTrigger>
           <Button

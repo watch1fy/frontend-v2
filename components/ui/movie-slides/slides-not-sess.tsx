@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollShadow } from "@nextui-org/react";
-import { getAllTrending } from "@/lib/functions/tmdb";
+import { getAllTrending } from "@/lib/functions/";
 import MovieCardNotInSession from "./movie-card-no-sess";
 
 const MovieSlidesNotInSession = async ({
@@ -12,6 +12,7 @@ const MovieSlidesNotInSession = async ({
   desc?: string;
 }) => {
   const movies: any[] = await getAllTrending();
+  console.log(movies[0])
   return (
     <section className={"flex gap-2 justify-between flex-col"}>
       <span
@@ -25,6 +26,7 @@ const MovieSlidesNotInSession = async ({
             ?.slice(1)
             .map((movie) => (
               <MovieCardNotInSession
+                id={movie.id}
                 key={movie.id}
                 title={movie.title}
                 rating={movie.vote_average}

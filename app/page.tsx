@@ -5,7 +5,7 @@ import { MovieSlidesNotInSession } from "@/components/ui/";
 
 export default async function Home() {
   return (
-    <>
+    <div className="py-8 px-12 flex-grow flex flex-col gap-8 w-full">
       <Hero />
       <Suspense fallback={<MovieCardSkeletonSlide />}>
         <MovieSlidesNotInSession sectionTitle="Popular" />
@@ -13,6 +13,6 @@ export default async function Home() {
       <CTA />
       <About />
       <Features />
-    </>
+    </div>
   );
 }

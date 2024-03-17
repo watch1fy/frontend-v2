@@ -1,4 +1,4 @@
-import { getAllTrending } from "@/lib/functions/tmdb";
+import { getAllTrending } from "@/lib/functions/";
 import HeroSlideChild from "./hero-slide-child";
 
 const HeroSlide = async () => {

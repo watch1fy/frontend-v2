@@ -21,6 +21,9 @@ export type FormFieldProps = {
 } & InputProps;
 
 export type MovieCardProps = {
+  id: number;
+  isLast?: boolean
+  isFirst?: boolean;
   isPopular?: boolean;
   subtext?: string;
   rank?: number;

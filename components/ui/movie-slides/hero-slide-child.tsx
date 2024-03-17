@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@nextui-org/button";
-import { ScrollShadow, Tooltip, Pagination } from "@nextui-org/react";
+import { Tooltip, Pagination } from "@nextui-org/react";
 import { motion, useMotionValue, Variants } from "framer-motion";
 import {
   BsBadgeHdFill,
@@ -13,6 +13,7 @@ import { MdArrowForward } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const slidesVarients: Variants = {
   hide: {
@@ -63,9 +64,8 @@ const HeroSlideChild = ({ dataArray }: { dataArray: any[] }) => {
     <motion.div
       initial="hide"
       whileInView="show"
-      viewport={{ once: true }}
       variants={slidesVarients}
-      className="relative flex flex-col overflow-hidden items-center justify-center w-full"
+      className="relative flex flex-col overflow-hidden items-center justify-center w-full rounded-lg"
     >
       <motion.div
         className="w-fit flex flex-row scrollbar-hide"
@@ -85,7 +85,7 @@ const HeroSlideChild = ({ dataArray }: { dataArray: any[] }) => {
           <SlideElement key={idx} position={idx} data={data} />
         ))}
       </motion.div>
-      <div className="absolute bottom-3 p-1 backdrop-blur-lg rounded-xl bg-zinc-500 bg-opacity-15 hidden sm:block">
+      <div className="shadow-lg rounded-xl absolute bottom-3 p-1 backdrop-blur-lg bg-zinc-500 bg-opacity-15 hidden sm:block">
         <Pagination
           total={dataArray.length}
           page={slide}
@@ -102,13 +102,12 @@ const HeroSlideChild = ({ dataArray }: { dataArray: any[] }) => {
 
 const SlideElement = ({ data, position }: { data: any; position: number }) => {
   return (
-    <div className="relative flex flex-col justify-center items-center gap-4 w-full h-fit flex-shrink-0 flex-grow-0 flex-auto">
-      <div className="relative flex flex-row justify-end w-full h-fit">
-        <div className="hidden md:block bg-transparent absolute w-full h-full bg-gradient-to-r from-background via-background via-15%"></div>
-        <div className="absolute top-0 right-0 w-full md:w-[75%] h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent via-70% to-background to-80%"></div>
-        <div className="absolute w-full h-full flex flex-col justify-end py-8 sm:py-24 gap-1 sm:gap-2 md:gap-4">
+    <div className="relative flex flex-col justify-center items-center gap-4 w-full h-fit flex-shrink-0 flex-grow-0 flex-auto rounded-lg">
+      <div className="relative flex flex-row justify-end w-full h-fit rounded-lg">
+        <div className="bg-transparent absolute w-full h-full bg-gradient-to-r from-background md:via-background md:via-40% rounded-lg"></div>
+        <div className="absolute w-full h-full flex flex-col justify-end py-8 sm:py-24 gap-1 sm:gap-2 md:gap-4 rounded-lg">
           <span className="text-primary">{`#${position + 1} Trending`}</span>
-          <span className="text-2xl sm:text-3xl md:text-5xl">
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold">
             {data.name || data.title}
           </span>
           <div className="flex-row gap-6 items-center text-sm hidden md:flex">
@@ -122,9 +121,6 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
             </div>
             <BsBadgeHdFill size={22} />
           </div>
-          <ScrollShadow className="w-[50%] h-32 hidden lg:block" hideScrollBar>
-            {data.overview}
-          </ScrollShadow>
           <div className="flex flex-row justify-between w-[55%]">
             <Button
               variant="ghost"
@@ -145,19 +141,21 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
               <FaPlayCircle size={36} />
             </Button>
             <div className="flex flex-row items-center gap-4">
-              <Button
-                size="lg"
-                variant="flat"
-                endContent={
-                  <MdArrowForward
-                    size={25}
-                    className="group-hover:rotate-[315deg] group-hover:scale-150 transition-transform group-hover:text-primary"
-                  />
-                }
-                className="text-xl hidden md:flex backdrop-blur-xl bg-zinc-500 bg-opacity-25"
-              >
-                More Info
-              </Button>
+              <Link href={data.media_type === 'movie' ? `/movies/${data.id}` : `/tv/${data.id}`}>
+                <Button
+                  size="lg"
+                  variant="flat"
+                  endContent={
+                    <MdArrowForward
+                      size={25}
+                      className="group-hover:rotate-[315deg] group-hover:scale-150 transition-transform group-hover:text-primary"
+                    />
+                  }
+                  className="text-xl hidden md:flex backdrop-blur-xl bg-zinc-500 bg-opacity-25"
+                >
+                  More Info
+                </Button>
+              </Link>
               <Button
                 className="p-0 bg-transparent border-none hover:scale-105 rounded-full h-fit w-fit flex md:hidden"
                 isIconOnly
@@ -172,7 +170,7 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
                 closeDelay={0}
               >
                 <Button
-                  className="p-0 bg-transparent border-none hover:scale-105 rounded-full h-fit w-fit"
+                  className="p-0 bg-default border-none hover:scale-105 rounded-full h-fit w-fit"
                   isIconOnly
                   variant="faded"
                 >
@@ -194,7 +192,7 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
         <Image
           priority
           alt={`${data.title} Cover Image`}
-          className="object-cover w-full md:w-[75%] h-auto"
+          className="object-cover w-full md:w-[65%] h-auto rounded-lg"
           height={200}
           src={
             `https://image.tmdb.org/t/p/original${data.backdrop_path}` ||
