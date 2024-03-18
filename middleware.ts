@@ -4,12 +4,23 @@ import { createSupabaseServerClient } from "./lib/supabase/server";
 import { routes } from "./config/route";
 
 export async function middleware(request: NextRequest) {
+  const url = new URL(request.url);
+  const basePath = url.pathname.split("/")[1]
+
+  console.log(basePath)
+
+  if (routes.unreleased.includes(basePath)) {
+    const rewritePath = request.nextUrl.clone();
+    rewritePath.pathname = '/not-found';
+    return NextResponse.rewrite(rewritePath);
+  }
+
+
   const response = await updateSession(request);
   const supabase = createSupabaseServerClient();
   const { data } = await supabase.auth.getUser();
-  const url = new URL(request.url);
 
-  if (routes.protected.includes(url.pathname)) {
+  if (routes.protected.includes(basePath)) {
     if (data?.user) {
       return response;
     } else {
@@ -21,7 +32,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (routes.auth.includes(url.pathname)) {
+  if (routes.auth.includes(basePath)) {
     if (data?.user) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = routes.protected[0];

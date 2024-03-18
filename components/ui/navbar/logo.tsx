@@ -1,18 +1,9 @@
 "use client";
-import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const Logo = () => {
-  const [mounted, setMounted] = useState<boolean>();
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted)
-    return (
+  return (
+    <div className="flex flex-row gap-0 justify-center items-center">
       <Image
         priority
         width={35}
@@ -21,17 +12,13 @@ const Logo = () => {
         className="lg:block hidden"
         src="/logofinal.svg"
       />
-    );
-
-  return (
-    <>
       <Image
         priority
         width={120}
         height={40}
         alt="logo"
         className="lg:block hidden"
-        src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
+        src={"/llogod.svg"}
       />
       <Image
         priority
@@ -39,9 +26,9 @@ const Logo = () => {
         height={35}
         alt="logo"
         className="lg:hidden"
-        src={theme === "light" ? "/llogol.svg" : "/llogod.svg"}
+        src={"/llogod.svg"}
       />
-    </>
+    </div>
   );
 };
 

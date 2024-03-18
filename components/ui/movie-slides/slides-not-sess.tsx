@@ -12,7 +12,7 @@ const MovieSlidesNotInSession = async ({
   desc?: string;
 }) => {
   const movies: any[] = await getAllTrending();
-  console.log(movies[0])
+
   return (
     <section className={"flex gap-2 justify-between flex-col"}>
       <span

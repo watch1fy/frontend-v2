@@ -8,12 +8,11 @@ const nextConfig = {
         port: "",
         pathname: "/t/p/original/**",
       },
+      {
+        protocol: "https",
+        hostname: "aceternity.com",
+      },
     ],
-  },
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
   },
 };
 
