@@ -3,15 +3,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <div className="flex flex-row gap-0 justify-center items-center">
-      <Image
-        priority
-        width={35}
-        height={35}
-        alt="logo"
-        className="lg:block hidden"
-        src="/logofinal.svg"
-      />
+    <>
       <Image
         priority
         width={120}
@@ -28,7 +20,7 @@ const Logo = () => {
         className="lg:hidden"
         src={"/llogod.svg"}
       />
-    </div>
+    </>
   );
 };
 

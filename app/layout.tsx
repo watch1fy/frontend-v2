@@ -51,7 +51,7 @@ export default async function RootLayout({
         >
           <div className="flex flex-col h-full min-h-screen">
             <Navbar />
-            <main className="h-full flex-grow">
+            <main className="h-full flex-grow flex flex-col justify-center items-center">
               {children}
             </main>
             <Footer />

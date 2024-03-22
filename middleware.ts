@@ -7,8 +7,6 @@ export async function middleware(request: NextRequest) {
   const url = new URL(request.url);
   const basePath = url.pathname.split("/")[1]
 
-  console.log(basePath)
-
   if (routes.unreleased.includes(basePath)) {
     const rewritePath = request.nextUrl.clone();
     rewritePath.pathname = '/not-found';

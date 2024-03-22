@@ -34,4 +34,4 @@ const Watch = async ({ params }: { params: { id: number } }) => {
   )
 }
 
-export default Watch
+export default Page
