@@ -26,5 +26,5 @@ export {
   MovieSlidesNotInSession,
   LoadingPage,
   FileUpload,
-  DemoPage
+  DemoPage,
 };

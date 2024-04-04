@@ -11,7 +11,6 @@ import Logo from "./logo";
 import { FaGithub } from "react-icons/fa6";
 
 export const NavbarNotInSession = () => {
-
   return (
     <Navbar
       maxWidth="xl"
@@ -27,7 +26,7 @@ export const NavbarNotInSession = () => {
 
       <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link href={'https://github.com/watch1fy'}>
+          <Link href={"https://github.com/watch1fy"}>
             <FaGithub size={24} />
           </Link>
         </NavbarItem>

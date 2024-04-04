@@ -5,7 +5,7 @@ import {
   useScroll,
   useTransform,
   useSpring,
-  MotionValue
+  MotionValue,
 } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@nextui-org/react";
@@ -13,11 +13,7 @@ import Link from "next/link";
 import { MdArrowForward } from "react-icons/md";
 import { useIsTablet } from "@/lib/hooks";
 
-export const HeroParallax = ({
-  contentList,
-}: {
-  contentList: any[];
-}) => {
+export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
   const firstRow = contentList.slice(0, 5);
   const secondRow = contentList.slice(5, 10);
   const thirdRow = contentList.slice(10, 15);
@@ -31,28 +27,28 @@ export const HeroParallax = ({
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig
+    springConfig,
   );
   const translateXReverse = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
+    springConfig,
   );
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig
+    springConfig,
   );
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
+    springConfig,
   );
   const translateY = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [-100, 0]),
-    springConfig
+    springConfig,
   );
   const scale = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [1, 0.75]),
-    springConfig
-  )
+    springConfig,
+  );
   return (
     <motion.div
       ref={ref}
@@ -87,7 +83,10 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div style={{}} className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div
+          style={{}}
+          className="flex flex-row-reverse space-x-reverse space-x-20"
+        >
           {thirdRow.map((content) => (
             <ContentCard
               content={content}
@@ -102,21 +101,20 @@ export const HeroParallax = ({
 };
 
 export const Header = () => {
-  const isTab = useIsTablet()
+  const isTab = useIsTablet();
 
   return (
-    <motion.div
-      className="max-w-7xl relative mx-auto py-20 md:py-40 px-6 w-full left-0 top-0 z-20">
+    <motion.div className="max-w-7xl relative mx-auto py-20 md:py-40 px-6 w-full left-0 top-0 z-20">
       <h1 className="text-4xl md:text-7xl font-bold dark:text-white">
         Watch&nbsp;
         <span className="text-primary-500">Together</span>
         <br />
-        Wherever you
-        are.
+        Wherever you are.
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        Watch together, even when miles apart. Real-time sync, video chat,
-        and more. Share the magic of movies and series, bridging the gap of distance with Watchify&apos;s immersive features.
+        Watch together, even when miles apart. Real-time sync, video chat, and
+        more. Share the magic of movies and series, bridging the gap of distance
+        with Watchify&apos;s immersive features.
       </p>
 
       <div className="flex flex-col md:flex-row gap-4 mt-8">

@@ -7,7 +7,7 @@ export const getPopularMovies = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
@@ -23,7 +23,7 @@ export const getTopRatedMovies = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
@@ -39,7 +39,7 @@ export const getMovieById = async (id: number) => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   return movieDetails;
 };
@@ -53,7 +53,7 @@ export const getSimilarMovies = async (id: number) => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   return movies?.results;
 };
@@ -67,9 +67,13 @@ export const getMovieImages = async (id: number) => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
-  if (!images.backdrops.length || !images.logos.length || !images.posters.length)
+  if (
+    !images.backdrops.length ||
+    !images.logos.length ||
+    !images.posters.length
+  )
     try {
       images = await fetch(
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.TMDB_API_KEY}`,
@@ -77,7 +81,7 @@ export const getMovieImages = async (id: number) => {
           cache: "force-cache",
         },
       ).then((data) => data.json());
-    } catch { }
+    } catch {}
 
   return images;
 };
@@ -91,7 +95,7 @@ export const getMovieVideos = async (id: number) => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   return videos?.results;
 };
@@ -105,7 +109,7 @@ export const getMovieReviews = async (id: number) => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   return reviews?.results;
 };

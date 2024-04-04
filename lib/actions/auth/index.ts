@@ -2,7 +2,8 @@
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { SignInFormData, SignUpFormData } from "@/lib/types";
-import { unstable_noStore } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
+import { cookies } from "next/headers";
 
 export const signUpNewUser = async ({ email, password }: SignUpFormData) => {
   const supabase = createSupabaseServerClient();
@@ -23,9 +24,17 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
 };
 
 export const signOut = async () => {
-  unstable_noStore();
+  noStore();
   const supabase = createSupabaseServerClient();
   const { error } = await supabase.auth.signOut();
 
   return JSON.stringify({ error });
 };
+
+export async function getCookie(cookieName: string): Promise<null | string> {
+  const auth_cookie = cookies().get(cookieName);
+  if (!auth_cookie) {
+    return null;
+  }
+  return auth_cookie.value;
+}

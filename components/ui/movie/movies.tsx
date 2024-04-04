@@ -1,12 +1,16 @@
 "use client";
 
 import { Button } from "@nextui-org/button";
-import { Chip, ScrollShadow, Spacer, Tab, Tabs, Tooltip } from "@nextui-org/react";
-import { motion, Variants } from "framer-motion";
 import {
-  BsBadgeHdFill,
-  BsPlusCircleFill,
-} from "react-icons/bs";
+  Chip,
+  ScrollShadow,
+  Spacer,
+  Tab,
+  Tabs,
+  Tooltip,
+} from "@nextui-org/react";
+import { motion, Variants } from "framer-motion";
+import { BsBadgeHdFill, BsPlusCircleFill } from "react-icons/bs";
 import { FaCalendar, FaPlayCircle } from "react-icons/fa";
 import Image from "next/image";
 import { FaClock, FaStar } from "react-icons/fa6";
@@ -26,27 +30,26 @@ const slidesVarients: Variants = {
   },
 };
 
-const MoviePage = (
-  { movie,
-    similarMovies,
-    images,
-    videos,
-    reviews
-  }:
-    {
-      movie: any,
-      similarMovies: any[],
-      images: any,
-      videos: any[],
-      reviews: any[]
-    }) => {
+const MoviePage = ({
+  movie,
+  similarMovies,
+  images,
+  videos,
+  reviews,
+}: {
+  movie: any;
+  similarMovies: any[];
+  images: any;
+  videos: any[];
+  reviews: any[];
+}) => {
   const getRunTimeFromMinutes = (minutes: number) => {
-    const hours = Math.floor(minutes / 60)
-    const mins = minutes % 60
-    return `${hours}h ${mins < 10 ? `0${mins}` : mins}m`
-  }
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return `${hours}h ${mins < 10 ? `0${mins}` : mins}m`;
+  };
 
-  const runtime: string = getRunTimeFromMinutes(movie?.runtime as number)
+  const runtime: string = getRunTimeFromMinutes(movie?.runtime as number);
 
   return (
     <motion.div
@@ -60,19 +63,22 @@ const MoviePage = (
           <div className="bg-transparent absolute w-full h-full bg-gradient-to-r from-background md:via-background md:via-30%"></div>
           <div className="absolute w-full h-full flex flex-col justify-end py-8 px-12 sm:py-24 gap-1 sm:gap-2 md:gap-4">
             <div className="flex flex-col gap-1">
-              {
-                images.logos && images.logos.length > 0 ?
-                  <Image
-                    alt={``}
-                    src={`https://image.tmdb.org/t/p/original${images.logos[0]?.file_path}`}
-                    className="w-fit h-auto aspect-auto"
-                    height={50}
-                    width={150} /> :
-                  <span className="text-2xl sm:text-3xl md:text-6xl font-bold">
-                    {movie.name || movie.title}
-                    {movie.tagline ? <p className="text-zinc-400">{movie.tagline}</p> : null}
-                  </span>
-              }
+              {images.logos && images.logos.length > 0 ? (
+                <Image
+                  alt={``}
+                  src={`https://image.tmdb.org/t/p/original${images.logos[0]?.file_path}`}
+                  className="w-fit h-auto aspect-auto"
+                  height={50}
+                  width={150}
+                />
+              ) : (
+                <span className="text-2xl sm:text-3xl md:text-6xl font-bold">
+                  {movie.name || movie.title}
+                  {movie.tagline ? (
+                    <p className="text-zinc-400">{movie.tagline}</p>
+                  ) : null}
+                </span>
+              )}
             </div>
             <Spacer y={4} />
             <div className="flex-row gap-6 items-center text-md hidden md:flex">
@@ -94,9 +100,18 @@ const MoviePage = (
               {movie.overview}
             </div>
             <div className="flex flex-row gap-4 items-center">
-              {
-                movie.genres?.map((genre: { id: number, name: string }, idx: number) => <Chip variant="flat" color="primary" className="cursor-default" key={idx}>{genre.name}</Chip>)
-              }
+              {movie.genres?.map(
+                (genre: { id: number; name: string }, idx: number) => (
+                  <Chip
+                    variant="flat"
+                    color="primary"
+                    className="cursor-default"
+                    key={idx}
+                  >
+                    {genre.name}
+                  </Chip>
+                ),
+              )}
             </div>
             <Spacer y={4} />
             <div className="flex flex-row gap-8 w-[55%]">
@@ -165,7 +180,7 @@ const MoviePage = (
           <SimilarMovies movies={similarMovies} />
         </Tab>
       </Tabs>
-    </motion.div >
+    </motion.div>
   );
 };
 
@@ -174,26 +189,27 @@ const SimilarMovies = ({ movies }: { movies: any[] }) => {
     <div className="w-full px-12">
       <ScrollShadow hideScrollBar orientation="horizontal" className="w-full">
         <div className="flex flex-row gap-8 w-fit py-4">
-          {movies?.filter((movie) => movie.poster_path).map((movie, idx) =>
-            <MovieCard
-              id={movie.id}
-              isFirst={idx === 0}
-              isLast={idx === movies?.length - 1}
-              key={movie.id}
-              title={movie.name || movie.title}
-              rating={movie.vote_average}
-              backdrop={movie.backdrop_path}
-              image={movie.poster_path}
-              votes={movie.vote_count}
-              desc={movie.overview}
-              adult={movie.adult}
-            />
-
-          )}
+          {movies
+            ?.filter((movie) => movie.poster_path)
+            .map((movie, idx) => (
+              <MovieCard
+                id={movie.id}
+                isFirst={idx === 0}
+                isLast={idx === movies?.length - 1}
+                key={movie.id}
+                title={movie.name || movie.title}
+                rating={movie.vote_average}
+                backdrop={movie.backdrop_path}
+                image={movie.poster_path}
+                votes={movie.vote_count}
+                desc={movie.overview}
+                adult={movie.adult}
+              />
+            ))}
         </div>
       </ScrollShadow>
     </div>
-  )
-}
+  );
+};
 
 export default MoviePage;

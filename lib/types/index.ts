@@ -22,7 +22,7 @@ export type FormFieldProps = {
 
 export type MovieCardProps = {
   id: number;
-  isLast?: boolean
+  isLast?: boolean;
   isFirst?: boolean;
   isPopular?: boolean;
   subtext?: string;

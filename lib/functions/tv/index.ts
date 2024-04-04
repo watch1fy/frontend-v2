@@ -7,7 +7,7 @@ export const getPopularTv = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
@@ -23,7 +23,7 @@ export const getTopRatedTv = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 

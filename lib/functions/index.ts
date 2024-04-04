@@ -1,4 +1,12 @@
-import { getMovieById, getTopRatedMovies, getSimilarMovies, getPopularMovies, getMovieImages, getMovieReviews, getMovieVideos } from "./movies";
+import {
+  getMovieById,
+  getTopRatedMovies,
+  getSimilarMovies,
+  getPopularMovies,
+  getMovieImages,
+  getMovieReviews,
+  getMovieVideos,
+} from "./movies";
 import { getTopRatedTv, getPopularTv } from "./tv";
 
 export const getAllTrending = async () => {
@@ -10,7 +18,7 @@ export const getAllTrending = async () => {
         cache: "force-cache",
       },
     ).then((data) => data.json());
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results;
 
@@ -24,10 +32,7 @@ export {
   getPopularMovies,
   getMovieImages,
   getMovieReviews,
-  getMovieVideos
-}
+  getMovieVideos,
+};
 
-export {
-  getTopRatedTv,
-  getPopularTv
-}
+export { getTopRatedTv, getPopularTv };

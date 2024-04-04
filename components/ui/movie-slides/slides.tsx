@@ -1,11 +1,16 @@
-import { getPopularMovies, getPopularTv, getTopRatedMovies, getTopRatedTv } from "@/lib/functions/";
+import {
+  getPopularMovies,
+  getPopularTv,
+  getTopRatedMovies,
+  getTopRatedTv,
+} from "@/lib/functions/";
 import SlidesContainer from "./slides-container";
 
 const categoryToFetchMapper = {
   "popular-tv": getPopularTv,
   "popular-movie": getPopularMovies,
   "top-movies": getTopRatedMovies,
-  "top-tv": getTopRatedTv
+  "top-tv": getTopRatedTv,
 };
 
 const MovieSlides = async ({

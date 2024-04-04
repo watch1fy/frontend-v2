@@ -141,7 +141,13 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
               <FaPlayCircle size={36} />
             </Button>
             <div className="flex flex-row items-center gap-4">
-              <Link href={data.media_type === 'movie' ? `/movies/${data.id}` : `/tv/${data.id}`}>
+              <Link
+                href={
+                  data.media_type === "movie"
+                    ? `/movies/${data.id}`
+                    : `/tv/${data.id}`
+                }
+              >
                 <Button
                   size="lg"
                   variant="flat"

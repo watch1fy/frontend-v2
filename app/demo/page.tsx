@@ -1,10 +1,8 @@
-import { DemoPage } from '@/components/ui'
-import React from 'react'
+import { DemoPage } from "@/components/ui";
+import React from "react";
 
 const Demo = () => {
-  return (
-    <DemoPage />
-  )
-}
+  return <DemoPage />;
+};
 
-export default Demo
+export default Demo;

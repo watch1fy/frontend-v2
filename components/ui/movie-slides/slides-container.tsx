@@ -36,8 +36,7 @@ const SlidesContainer = ({
   categoryType: "popular-tv" | "popular-movie" | "top-movies" | "top-tv";
   movies: any[];
 }) => {
-
-  const isTab = useIsTablet()
+  const isTab = useIsTablet();
   return (
     <motion.section
       initial="hide"

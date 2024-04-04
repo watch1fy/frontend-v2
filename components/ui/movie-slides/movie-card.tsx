@@ -7,7 +7,13 @@ import { Tooltip } from "@nextui-org/react";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdFontDownload } from "react-icons/md";
 
-export const MovieCard = ({ adult, title, image, isFirst, isLast }: MovieCardProps) => {
+export const MovieCard = ({
+  adult,
+  title,
+  image,
+  isFirst,
+  isLast,
+}: MovieCardProps) => {
   return (
     <div className="group rounded-lg flex-grow-0 flex-shrink-0">
       <div
