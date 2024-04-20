@@ -13,7 +13,7 @@ import {
   Input,
 } from "@nextui-org/react";
 import Image from "next/image";
-import FileUpload from "../file-upload";
+// import FileUpload from "../file-upload";
 
 const PartyCreateCard = () => {
   const user = JSON.parse(localStorage.getItem("user") as string);
@@ -55,14 +55,14 @@ const PartyCreateCard = () => {
               width={0.66 * 120}
             />
           </div>
-          <div className="w-full flex flex-col items-center gap-2">
+          {/* <div className="w-full flex flex-col items-center gap-2">
             <div className="flex flex-row gap-2 justify-center items-center w-full">
               <Divider className="w-1/6" />
-              Or
+              <span className="text-zinc-400 font-light">Or</span>
               <Divider className="w-1/6" />
             </div>
             <FileUpload />
-          </div>
+          </div> */}
           <Divider />
           <div className="w-full">
             <span className="text-2xl text-primary">Settings</span>
