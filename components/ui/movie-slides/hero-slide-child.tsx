@@ -175,22 +175,18 @@ const SlideElement = ({ data, position }: { data: any; position: number }) => {
                 delay={0}
                 closeDelay={0}
               >
-                <Button
-                  className="p-0 bg-default border-none hover:scale-105 rounded-full h-fit w-fit"
-                  isIconOnly
-                  variant="faded"
-                >
+                <div>
                   <BsPlusCircleFill
-                    className="md:flex hidden"
+                    className="md:flex hidden hover:scale-105 transition cursor-pointer"
                     color="white"
                     size={46}
                   />
                   <BsPlusCircleFill
-                    className="flex md:hidden"
+                    className="flex md:hidden hover:scale-105 transition cursor-pointer"
                     color="white"
                     size={32}
                   />
-                </Button>
+                </div>
               </Tooltip>
             </div>
           </div>

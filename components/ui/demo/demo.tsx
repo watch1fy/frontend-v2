@@ -28,7 +28,7 @@ const DemoPage = () => {
         setVerified(true);
       } catch (err: unknown) {
         if (err instanceof AxiosError || err instanceof Error)
-          toast.error("Could not create session" || "", {
+          toast.error("Could not create session", {
             duration: 5000,
             description: `There was an error while creating session. ${err.message}`,
           });

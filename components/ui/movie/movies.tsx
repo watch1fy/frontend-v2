@@ -65,7 +65,7 @@ const MoviePage = ({
             <div className="flex flex-col gap-1">
               {images.logos && images.logos.length > 0 ? (
                 <Image
-                  alt={``}
+                  alt={`Movie/Tv Logo`}
                   src={`https://image.tmdb.org/t/p/original${images.logos[0]?.file_path}`}
                   className="w-fit h-auto aspect-auto"
                   height={50}
@@ -140,22 +140,18 @@ const MoviePage = ({
                   delay={0}
                   closeDelay={0}
                 >
-                  <Button
-                    className="p-0 bg-default border-none hover:scale-105 rounded-full h-fit w-fit"
-                    isIconOnly
-                    variant="faded"
-                  >
+                  <div>
                     <BsPlusCircleFill
-                      className="md:flex hidden"
+                      className="md:flex hidden hover:scale-105 transition cursor-pointer"
                       color="white"
                       size={46}
                     />
                     <BsPlusCircleFill
-                      className="flex md:hidden"
+                      className="flex md:hidden hover:scale-105 transition cursor-pointer"
                       color="white"
                       size={32}
                     />
-                  </Button>
+                  </div>
                 </Tooltip>
               </div>
             </div>
