@@ -35,3 +35,7 @@ export type MovieCardProps = {
   desc: string;
   adult: boolean;
 };
+
+export type detailType = {
+  currentTime: number
+}
