@@ -12,9 +12,7 @@ import { FaGithub } from "react-icons/fa6";
 
 export const NavbarNotInSession = () => {
   return (
-    <Navbar
-      maxWidth="xl"
-    >
+    <Navbar maxWidth="xl">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <Link href="/">

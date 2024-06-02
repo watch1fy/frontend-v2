@@ -31,39 +31,43 @@ export const MEDIA_STYLES = {
   "--media-menu-checkbox-bg-active": "#F31260",
   "--media-menu-checkbox-height": "24px",
   "--media-menu-checkbox-width": "48px",
-  "--media-menu-checkbox-handle-diameter": "calc(var(--media-menu-checkbox-height) - 4px)",
+  "--media-menu-checkbox-handle-diameter":
+    "calc(var(--media-menu-checkbox-height) - 4px)",
 
-  "--media-font-family": "var(--font-urbanist)"
-}
+  "--media-font-family": "var(--font-urbanist)",
+};
 
 export const demoPlayerTracks = [
   // Subtitles
   {
-    src: 'https://files.vidstack.io/sprite-fight/subs/english.vtt',
-    label: 'English',
-    language: 'en-US',
-    kind: 'subtitles',
+    src: "https://files.vidstack.io/sprite-fight/subs/english.vtt",
+    label: "English",
+    language: "en-US",
+    kind: "subtitles",
     default: true,
   },
   // Chapters
   {
-    src: 'https://files.vidstack.io/sprite-fight/chapters.vtt',
-    kind: 'chapters',
-    language: 'en-US',
+    src: "https://files.vidstack.io/sprite-fight/chapters.vtt",
+    kind: "chapters",
+    language: "en-US",
     default: true,
   },
 ];
 
-export const DEMO_VIDEO_SRC = "https://files.vidstack.io/sprite-fight/hls/stream.m3u8"
+export const DEMO_VIDEO_SRC =
+  "https://files.vidstack.io/sprite-fight/hls/stream.m3u8";
 
-export const DEMO_VIDEO_POSTER = "https://files.vidstack.io/sprite-fight/poster.webp"
+export const DEMO_VIDEO_POSTER =
+  "https://files.vidstack.io/sprite-fight/poster.webp";
 
-export const DEMO_VIDEO_LOGO = "https://image.tmdb.org/t/p/original/eHUj6cIvrKH0bDIDnpOeYS1qCHY.png"
+export const DEMO_VIDEO_LOGO =
+  "https://image.tmdb.org/t/p/original/eHUj6cIvrKH0bDIDnpOeYS1qCHY.png";
 
-export const DEMO_VIDEO_THUMBNAILS = "https://image.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/storyboard.vtt"
+export const DEMO_VIDEO_THUMBNAILS =
+  "https://image.mux.com/VZtzUzGRv02OhRnZCxcNg49OilvolTqdnFLEqBsTwaxU/storyboard.vtt";
 
-export const DEMO_VIDEO_DESC =
-  `
+export const DEMO_VIDEO_DESC = `
     Set in 80’s-Britain, when a group of rowdy teenagers trek into an isolated forest,
     they discover peaceful mushroom creatures that turn out to be an unexpected force of nature.
-  `
+  `;

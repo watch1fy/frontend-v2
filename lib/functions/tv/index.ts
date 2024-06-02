@@ -3,9 +3,6 @@ export const getPopularTv = async () => {
   try {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -19,9 +16,6 @@ export const getTopRatedTv = async () => {
   try {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200&api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 

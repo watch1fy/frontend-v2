@@ -13,7 +13,7 @@ function About() {
           fy?
         </span>
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden md:flex text-justify">
         &emsp;&emsp;&emsp;Welcome to Watchify, where we redefine the art of
         shared viewing experiences. Our platform is built on the foundation of
         seamless synchronization, allowing you to enjoy movies, series, and

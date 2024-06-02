@@ -3,9 +3,6 @@ export const getPopularMovies = async () => {
   try {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -19,9 +16,6 @@ export const getTopRatedMovies = async () => {
   try {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&sort_by=vote_avg.desc`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -35,9 +29,6 @@ export const getMovieById = async (id: number) => {
   try {
     movieDetails = await fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -49,9 +40,6 @@ export const getSimilarMovies = async (id: number) => {
   try {
     movies = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -63,9 +51,6 @@ export const getMovieImages = async (id: number) => {
   try {
     images = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/images?language=en&api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -77,9 +62,6 @@ export const getMovieImages = async (id: number) => {
     try {
       images = await fetch(
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.TMDB_API_KEY}`,
-        {
-          cache: "force-cache",
-        },
       ).then((data) => data.json());
     } catch {}
 
@@ -91,9 +73,6 @@ export const getMovieVideos = async (id: number) => {
   try {
     videos = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 
@@ -105,9 +84,6 @@ export const getMovieReviews = async (id: number) => {
   try {
     reviews = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_API_KEY}`,
-      {
-        cache: "force-cache",
-      },
     ).then((data) => data.json());
   } catch {}
 

@@ -104,7 +104,7 @@ const MoviePage = ({
                 (genre: { id: number; name: string }, idx: number) => (
                   <Chip
                     variant="flat"
-                    color="primary"
+                    color="default"
                     className="cursor-default"
                     key={idx}
                   >

@@ -37,5 +37,5 @@ export type MovieCardProps = {
 };
 
 export type detailType = {
-  currentTime: number
-}
+  currentTime: number;
+};

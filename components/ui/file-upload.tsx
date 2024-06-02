@@ -11,12 +11,12 @@ const FileUpload = () => {
   const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const reqfiles: FileList | null = event.target.files;
     if (reqfiles?.length) {
-      if (!reqfiles[0].type.startsWith('video/')) {
-        toast.error('Please choose a valid video file', {
+      if (!reqfiles[0].type.startsWith("video/")) {
+        toast.error("Please choose a valid video file", {
           duration: 5000,
-          description: `The uploaded file had a type of "${reqfiles[0].type}", which is not a valid video file type.`
-        })
-        return
+          description: `The uploaded file had a type of "${reqfiles[0].type}", which is not a valid video file type.`,
+        });
+        return;
       }
       setFiles([...files, reqfiles[0]]);
     }
@@ -27,8 +27,8 @@ const FileUpload = () => {
       const updatedFiles = [...files];
       updatedFiles.splice(idx, 1);
       return updatedFiles;
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -61,9 +61,11 @@ const FileUpload = () => {
             </div>
             <div className="flex flex-row items-center gap-2">
               <Button
-                isIconOnly variant="faded"
+                isIconOnly
+                variant="faded"
                 color="danger"
-                onClick={() => handleFileDelete(idx)}>
+                onClick={() => handleFileDelete(idx)}
+              >
                 <FaTrashCan size={20} />
               </Button>
               <Button isIconOnly variant="faded">
