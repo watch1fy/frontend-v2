@@ -7,7 +7,7 @@ export const getAllTrending = async () => {
         cache: 'force-cache',
       }
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results
 
@@ -20,7 +20,7 @@ export const getPopularMovies = async () => {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&sort_by=popularity.desc`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results
 
@@ -33,7 +33,7 @@ export const getTopRatedMovies = async () => {
     movies_res = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}&sort_by=vote_avg.desc`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   const movies: any[] = movies_res?.results
 
@@ -46,7 +46,7 @@ export const getMovieById = async (id: number) => {
     movieDetails = await fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY}`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   return movieDetails
 }
@@ -57,7 +57,7 @@ export const getSimilarMovies = async (id: number) => {
     movies = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   return movies?.results
 }
@@ -68,7 +68,7 @@ export const getMovieImages = async (id: number) => {
     images = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/images?language=en&api_key=${process.env.TMDB_API_KEY}`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   if (
     !images.backdrops.length ||
@@ -79,7 +79,7 @@ export const getMovieImages = async (id: number) => {
       images = await fetch(
         `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.TMDB_API_KEY}`
       ).then((data) => data.json())
-    } catch { }
+    } catch {}
 
   return images
 }
@@ -90,7 +90,7 @@ export const getMovieVideos = async (id: number) => {
     videos = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.TMDB_API_KEY}`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   return videos?.results
 }
@@ -101,7 +101,7 @@ export const getMovieReviews = async (id: number) => {
     reviews = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.TMDB_API_KEY}`
     ).then((data) => data.json())
-  } catch { }
+  } catch {}
 
   return reviews?.results
 }

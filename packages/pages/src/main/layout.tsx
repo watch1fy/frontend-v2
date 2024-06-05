@@ -1,7 +1,8 @@
 import { NextUIProviders } from '@watchify/design-system'
-import { Footer, Toast, Navbar } from '@watchify/design-system'
+import { Footer, Toast, WatchifyNavbar } from '@watchify/design-system'
 import clsx from 'clsx'
 import { Urbanist } from 'next/font/google'
+import '../styles/globals.css'
 
 export const urbanist = Urbanist({
   subsets: ['latin'],
@@ -25,7 +26,7 @@ export default async function RootLayout({
         <Toast />
         <NextUIProviders>
           <div className="flex flex-col h-full min-h-screen">
-            <Navbar />
+            <WatchifyNavbar />
             <main className="h-full flex-grow flex flex-col justify-center items-center">
               {children}
             </main>

@@ -1,7 +1,7 @@
 {
   "name": "@watchify/pages",
   "version": "0.0.1",
-  "repository": "https://github.com/vercel/examples.git",
+  "repository": "https://github.com/watch1fy/frontend-v2.git",
   "license": "MIT",
   "scripts": {
     "dev": "pnpm build:swc -w",
