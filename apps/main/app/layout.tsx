@@ -1,14 +1,7 @@
-import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
-import { NextUIProviders } from "@/components/providers/nextuiProviders";
-import { Footer, Toast, Navbar } from "@/components/ui/";
-import clsx from "clsx";
-import { Urbanist } from "next/font/google";
+import { RootLayout } from "@watchify/pages";
+import { Viewport, Metadata } from "next";
+import "@/styles/globals.css"
 
-export const urbanist = Urbanist({
-  subsets: ["latin"],
-  variable: "--font-urbanist",
-});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -31,33 +24,4 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <head />
-      <body
-        className={clsx(
-          "bg-background font-sans antialiased",
-          urbanist.className,
-        )}
-      >
-        <Toast />
-        <NextUIProviders
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-        >
-          <div className="flex flex-col h-full min-h-screen">
-            <Navbar />
-            <main className="h-full flex-grow flex flex-col justify-center items-center">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </NextUIProviders>
-      </body>
-    </html>
-  );
-}
+export default RootLayout;

@@ -1,0 +1,10 @@
+{
+  "root": true,
+  // This tells ESLint to load the config from the package `eslint-config`
+  "extends": ["watchify"],
+  "settings": {
+    "next": {
+      "rootDir": ["apps/*/"]
+    }
+  }
+}
