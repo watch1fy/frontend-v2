@@ -1,5 +1,5 @@
-"use client";
-import Image from "next/image";
+'use client'
+import Image from 'next/image'
 
 const Logo = () => {
   return (
@@ -10,7 +10,7 @@ const Logo = () => {
         height={40}
         alt="logo"
         className="lg:block hidden"
-        src={"/llogod.svg"}
+        src={'/llogod.svg'}
       />
       <Image
         priority
@@ -18,10 +18,10 @@ const Logo = () => {
         height={35}
         alt="logo"
         className="lg:hidden"
-        src={"/llogod.svg"}
+        src={'/llogod.svg'}
       />
     </>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo

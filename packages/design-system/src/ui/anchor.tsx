@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 function FeatureAnchor() {
   return (
@@ -8,16 +8,16 @@ function FeatureAnchor() {
         Site Links
       </li>
       <li className="text-[12px] md:text-lg hover:text-gray-500 dark:hover:text-gray-400 cursor-pointer">
-        <Link href={"#join-anchor"}>Join</Link>
+        <Link href={'#join-anchor'}>Join</Link>
       </li>
       <li className="text-[12px] md:text-lg hover:text-gray-500 dark:hover:text-gray-400 cursor-pointer">
-        <Link href={"#about-anchor"}>About</Link>
+        <Link href={'#about-anchor'}>About</Link>
       </li>
       <li className="text-[12px] md:text-lg hover:text-gray-500 dark:hover:text-gray-400 cursor-pointer">
-        <Link href={"#feature-anchor"}>Features</Link>
+        <Link href={'#feature-anchor'}>Features</Link>
       </li>
     </ul>
-  );
+  )
 }
 
-export default FeatureAnchor;
+export default FeatureAnchor

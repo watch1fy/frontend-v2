@@ -1,3 +1,3 @@
-import { Page } from "@watchify/pages";
+import { Page } from '@watchify/pages'
 
-export default Page;
+export default Page

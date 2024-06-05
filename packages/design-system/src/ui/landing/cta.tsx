@@ -1,9 +1,9 @@
-"use client";
-import { Divider, Button } from "@nextui-org/react";
-import { useDisclosure } from "@nextui-org/react";
+'use client'
+import { Divider, Button } from '@nextui-org/react'
+import { useDisclosure } from '@nextui-org/react'
 
 function CTA() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   return (
     <section className="flex flex-col items-center justify-center rounded-3xl">
@@ -36,7 +36,7 @@ function CTA() {
       </div>
       <Divider id="about-anchor" className="mt-8" />
     </section>
-  );
+  )
 }
 
-export default CTA;
+export default CTA

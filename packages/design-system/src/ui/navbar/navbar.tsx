@@ -1,11 +1,11 @@
-import { NavbarNotInSession } from "./nav";
+import { NavbarNotInSession } from './nav'
 
 export type ImageProps = {
-  size?: number;
-  width: number | undefined;
-  height: number | undefined;
-};
+  size?: number
+  width: number | undefined
+  height: number | undefined
+}
 
 export const Navbar = async () => {
-  return <NavbarNotInSession />;
-};
+  return <NavbarNotInSession />
+}

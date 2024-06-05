@@ -1,34 +1,34 @@
-"use client";
-import { Button } from "@nextui-org/react";
-import { ChangeEvent, useState } from "react";
-import { FaTrashCan, FaVideo } from "react-icons/fa6";
-import { HiOutlineUpload } from "react-icons/hi";
-import { toast } from "sonner";
+'use client'
+import { Button } from '@nextui-org/react'
+import { ChangeEvent, useState } from 'react'
+import { FaTrashCan, FaVideo } from 'react-icons/fa6'
+import { HiOutlineUpload } from 'react-icons/hi'
+import { toast } from 'sonner'
 
 const FileUpload = () => {
-  const [files, setFiles] = useState<any[]>([]);
+  const [files, setFiles] = useState<any[]>([])
 
   const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    const reqfiles: FileList | null = event.target.files;
+    const reqfiles: FileList | null = event.target.files
     if (reqfiles?.length) {
-      if (!reqfiles[0].type.startsWith("video/")) {
-        toast.error("Please choose a valid video file", {
+      if (!reqfiles[0].type.startsWith('video/')) {
+        toast.error('Please choose a valid video file', {
           duration: 5000,
           description: `The uploaded file had a type of "${reqfiles[0].type}", which is not a valid video file type.`,
-        });
-        return;
+        })
+        return
       }
-      setFiles([...files, reqfiles[0]]);
+      setFiles([...files, reqfiles[0]])
     }
-  };
+  }
 
   const handleFileDelete = (idx: number) => {
     setFiles((files) => {
-      const updatedFiles = [...files];
-      updatedFiles.splice(idx, 1);
-      return updatedFiles;
-    });
-  };
+      const updatedFiles = [...files]
+      updatedFiles.splice(idx, 1)
+      return updatedFiles
+    })
+  }
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -76,7 +76,7 @@ const FileUpload = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FileUpload;
+export default FileUpload

@@ -1,25 +1,25 @@
-import { NextUIProviders } from "@watchify/design-system";
-import { Footer, Toast, Navbar } from "@watchify/design-system";
-import clsx from "clsx";
-import { Urbanist } from "next/font/google";
+import { NextUIProviders } from '@watchify/design-system'
+import { Footer, Toast, Navbar } from '@watchify/design-system'
+import clsx from 'clsx'
+import { Urbanist } from 'next/font/google'
 
 export const urbanist = Urbanist({
-  subsets: ["latin"],
-  variable: "--font-urbanist",
-});
+  subsets: ['latin'],
+  variable: '--font-urbanist',
+})
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth dark">
       <head />
       <body
         className={clsx(
-          "bg-background font-sans antialiased",
-          urbanist.className,
+          'bg-background font-sans antialiased',
+          urbanist.className
         )}
       >
         <Toast />
@@ -34,5 +34,5 @@ export default async function RootLayout({
         </NextUIProviders>
       </body>
     </html>
-  );
+  )
 }

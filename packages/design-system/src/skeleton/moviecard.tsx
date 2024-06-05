@@ -1,4 +1,4 @@
-import { Card, ScrollShadow, Skeleton, CardBody } from "@nextui-org/react";
+import { Card, ScrollShadow, Skeleton, CardBody } from '@nextui-org/react'
 
 export const MovieCardSkeletonSlide = () => {
   return (
@@ -20,8 +20,8 @@ export const MovieCardSkeletonSlide = () => {
         </div>
       </ScrollShadow>
     </section>
-  );
-};
+  )
+}
 
 export const MovieCardSkeleton = () => {
   return (
@@ -38,5 +38,5 @@ export const MovieCardSkeleton = () => {
         </Skeleton>
       </CardBody>
     </Card>
-  );
-};
+  )
+}

@@ -20,7 +20,9 @@
       "./dist/*.js",
       "./dist/*/index.js"
     ],
-    "./tailwind": ["./dist/tailwind-preset.js"]
+    "./tailwind": [
+      "./dist/tailwind-preset.js"
+    ]
   },
   "files": [
     "dist"

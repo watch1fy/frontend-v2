@@ -1,4 +1,4 @@
-"use client"
-import { Errorr } from "@watchify/pages"
+'use client'
+import { Errorr } from '@watchify/pages'
 
-export default Errorr;
+export default Errorr

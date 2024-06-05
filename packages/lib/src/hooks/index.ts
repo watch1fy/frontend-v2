@@ -1,1 +1,1 @@
-export * from "./use-tablet"
+export * from './use-tablet'

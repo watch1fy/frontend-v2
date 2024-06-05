@@ -1,1 +1,1 @@
-export * from "./nextuiProviders"
+export * from './nextuiProviders'

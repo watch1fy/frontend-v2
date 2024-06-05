@@ -1,19 +1,15 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import { NextUIProvider } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import * as React from 'react'
+import { NextUIProvider } from '@nextui-org/react'
+import { useRouter } from 'next/navigation'
 
 export interface ProvidersProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function NextUIProviders({ children }: ProvidersProps) {
-  const router = useRouter();
+  const router = useRouter()
 
-  return (
-    <NextUIProvider navigate={router.push}>
-      {children}
-    </NextUIProvider>
-  );
+  return <NextUIProvider navigate={router.push}>{children}</NextUIProvider>
 }

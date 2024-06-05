@@ -1,5 +1,5 @@
 {
-  "extends": ["next/babel","next/core-web-vitals", "turbo", "prettier"],
+  "extends": ["next/babel", "next/core-web-vitals", "turbo", "prettier"],
   "plugins": ["unused-imports"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",

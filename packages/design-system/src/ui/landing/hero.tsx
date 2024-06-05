@@ -1,9 +1,9 @@
-import { getAllTrending } from "@watchify/lib";
-import { HeroParallax } from "./hero-parallax";
+import { getAllTrending } from '@watchify/lib'
+import { HeroParallax } from './hero-parallax'
 
 const Hero = async () => {
-  const content: any[] = await getAllTrending();
-  return <HeroParallax contentList={content} />;
-};
+  const content: any[] = await getAllTrending()
+  return <HeroParallax contentList={content} />
+}
 
-export default Hero;
+export default Hero

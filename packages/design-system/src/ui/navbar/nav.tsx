@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
 import {
   NavbarContent,
   NavbarBrand,
   NavbarItem,
   Navbar,
-} from "@nextui-org/react";
-import Link from "next/link";
-import Logo from "./logo";
-import { FaGithub } from "react-icons/fa6";
+} from '@nextui-org/react'
+import Link from 'next/link'
+import Logo from './logo'
+import { FaGithub } from 'react-icons/fa6'
 
 export const NavbarNotInSession = () => {
   return (
@@ -23,11 +23,11 @@ export const NavbarNotInSession = () => {
 
       <NavbarContent className="sm:flex" justify="end">
         <NavbarItem className="flex gap-4 flex-row justify-center items-center">
-          <Link href={"https://github.com/watch1fy"}>
+          <Link href={'https://github.com/watch1fy'}>
             <FaGithub size={24} />
           </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
-  );
-};
+  )
+}

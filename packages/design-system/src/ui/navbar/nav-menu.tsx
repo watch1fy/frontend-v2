@@ -1,17 +1,17 @@
-import { Button } from "@nextui-org/react";
+import { Button } from '@nextui-org/react'
 import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/react";
+} from '@nextui-org/react'
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-} from "@nextui-org/react";
-import { FaAngleDown } from "react-icons/fa";
+} from '@nextui-org/react'
+import { FaAngleDown } from 'react-icons/fa'
 
 export const NavbarMenuMobile = () => {
   return (
@@ -22,8 +22,8 @@ export const NavbarMenuMobile = () => {
         <NavbarMenuItem>Item 3</NavbarMenuItem>
       </NavbarMenu>
     </>
-  );
-};
+  )
+}
 
 export const NavbarMenuFull = () => {
   return (
@@ -34,8 +34,8 @@ export const NavbarMenuFull = () => {
         <MenuWatchlist />
       </NavbarContent>
     </>
-  );
-};
+  )
+}
 
 export const MenuHome = () => {
   return (
@@ -60,8 +60,8 @@ export const MenuHome = () => {
         <DropdownItem key="tv">TV Shows</DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  );
-};
+  )
+}
 
 export const MenuCategories = () => {
   return (
@@ -84,7 +84,7 @@ export const MenuCategories = () => {
         variant="flat"
         aria-label="Home"
         itemClasses={{
-          base: "gap-4",
+          base: 'gap-4',
         }}
       >
         <DropdownItem key="all">All</DropdownItem>
@@ -92,8 +92,8 @@ export const MenuCategories = () => {
         <DropdownItem key="tv">TV Shows</DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  );
-};
+  )
+}
 
 export const MenuWatchlist = () => {
   return (
@@ -106,5 +106,5 @@ export const MenuWatchlist = () => {
     >
       Watchlist
     </Button>
-  );
-};
+  )
+}

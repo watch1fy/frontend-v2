@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { ScrollShadow } from "@nextui-org/react";
+import React from 'react'
+import { ScrollShadow } from '@nextui-org/react'
 
 function About() {
   return (
@@ -49,7 +49,7 @@ function About() {
       </div>
       <div id="feature-anchor" className="hidden"></div>
     </section>
-  );
+  )
 }
 
-export default About;
+export default About

@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import { Button } from "@watchify/design-system";
-import { useEffect } from "react";
-import { FaCircleExclamation } from "@watchify/design-system";
+import { Button } from '@watchify/design-system'
+import { useEffect } from 'react'
+import { FaCircleExclamation } from '@watchify/design-system'
 
 export default function Errorr({
   error,
   reset,
 }: {
-  error: Error;
-  reset: () => void;
+  error: Error
+  reset: () => void
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    console.error(error)
+  }, [error])
 
   return (
     <div className="w-full h-full flex justify-center items-center flex-col gap-6">
@@ -34,5 +34,5 @@ export default function Errorr({
         Try again
       </Button>
     </div>
-  );
+  )
 }

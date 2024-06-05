@@ -1,10 +1,10 @@
-"use client";
-import { Accordion, AccordionItem, Button } from "@nextui-org/react";
-import Image from "next/image";
-import { features } from "@watchify/lib";
-import React from "react";
-import Link from "next/link";
-import { MdArrowForward } from "react-icons/md";
+'use client'
+import { Accordion, AccordionItem, Button } from '@nextui-org/react'
+import Image from 'next/image'
+import { features } from '@watchify/lib'
+import React from 'react'
+import Link from 'next/link'
+import { MdArrowForward } from 'react-icons/md'
 
 function Features() {
   return (
@@ -20,7 +20,7 @@ function Features() {
             <div className="flex flex-col-reverse md:flex-row gap-4 pb-4 justify-between">
               <div className="md:w-[50%] w-full flex flex-col justify-between gap-4">
                 <p className="w-full">{feature.content}</p>
-                <Link href={"#"} className="md:w-fit">
+                <Link href={'#'} className="md:w-fit">
                   <Button
                     variant="flat"
                     color="default"
@@ -48,7 +48,7 @@ function Features() {
         ))}
       </Accordion>
     </section>
-  );
+  )
 }
 
-export default Features;
+export default Features

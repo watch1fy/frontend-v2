@@ -1,54 +1,54 @@
-"use client";
-import React from "react";
+'use client'
+import React from 'react'
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
   MotionValue,
-} from "framer-motion";
-import Image from "next/image";
-import { Button } from "@nextui-org/react";
-import Link from "next/link";
-import { MdArrowForward } from "react-icons/md";
-import { useIsTablet } from "@watchify/lib";
+} from 'framer-motion'
+import Image from 'next/image'
+import { Button } from '@nextui-org/react'
+import Link from 'next/link'
+import { MdArrowForward } from 'react-icons/md'
+import { useIsTablet } from '@watchify/lib'
 
 export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
-  const firstRow = contentList.slice(0, 5);
-  const secondRow = contentList.slice(5, 10);
-  const thirdRow = contentList.slice(10, 15);
-  const ref = React.useRef(null);
+  const firstRow = contentList.slice(0, 5)
+  const secondRow = contentList.slice(5, 10)
+  const thirdRow = contentList.slice(10, 15)
+  const ref = React.useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
-  });
+    offset: ['start start', 'end start'],
+  })
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 }
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig,
-  );
+    springConfig
+  )
   const translateXReverse = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig,
-  );
+    springConfig
+  )
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig,
-  );
+    springConfig
+  )
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig,
-  );
+    springConfig
+  )
   const translateY = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [-100, 0]),
-    springConfig,
-  );
+    springConfig
+  )
   const scale = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [1, 0.75]),
-    springConfig,
-  );
+    springConfig
+  )
   return (
     <motion.div
       ref={ref}
@@ -97,11 +97,11 @@ export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
         </motion.div>
       </motion.div>
     </motion.div>
-  );
-};
+  )
+}
 
 export const Header = () => {
-  const isTab = useIsTablet();
+  const isTab = useIsTablet()
 
   return (
     <motion.div className="max-w-7xl relative mx-auto py-20 md:py-40 px-6 w-full left-0 top-0 z-20">
@@ -118,12 +118,12 @@ export const Header = () => {
       </p>
 
       <div className="flex flex-col md:flex-row gap-4 mt-8">
-        <Link href={"#about-anchor"} className="md:w-fit">
+        <Link href={'#about-anchor'} className="md:w-fit">
           <Button
             variant="faded"
             color="default"
             radius="lg"
-            size={isTab ? "md" : "lg"}
+            size={isTab ? 'md' : 'lg'}
             className="w-full md:w-[200px] md:text-lg group flex gap-4"
           >
             Know More
@@ -133,12 +133,12 @@ export const Header = () => {
             />
           </Button>
         </Link>
-        <Link href={"/demo"} className="md:w-fit">
+        <Link href={'/demo'} className="md:w-fit">
           <Button
             variant="shadow"
             color="primary"
             radius="lg"
-            size={isTab ? "md" : "lg"}
+            size={isTab ? 'md' : 'lg'}
             className="w-full md:w-[200px] md:text-lg"
           >
             Try Demo
@@ -146,15 +146,15 @@ export const Header = () => {
         </Link>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 export const ContentCard = ({
   content,
   translate,
 }: {
-  content: any;
-  translate: MotionValue<number>;
+  content: any
+  translate: MotionValue<number>
 }) => {
   return (
     <motion.div
@@ -175,5 +175,5 @@ export const ContentCard = ({
         className="w-full h-auto rounded-xl"
       />
     </motion.div>
-  );
-};
+  )
+}
