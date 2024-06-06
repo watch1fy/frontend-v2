@@ -1,6 +1,6 @@
 import { RootLayout } from '@watchify/pages'
 import { Viewport, Metadata } from 'next'
-import '@/styles/globals.css'
+import '@watchify/design-system/globals'
 
 export const viewport: Viewport = {
   themeColor: [

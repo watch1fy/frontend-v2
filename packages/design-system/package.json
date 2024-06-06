@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "pnpm build:swc -w",
     "build": "rm -rf dist && pnpm build:swc && pnpm types",
-    "build:swc": "pnpm copy-tailwind && swc src -d dist",
-    "copy-tailwind": "mkdir -p dist && cp ./src/tailwind-preset.js dist/tailwind-preset.js",
+    "build:swc": "pnpm copy-globals && swc src -d dist",
+    "copy-globals": "mkdir -p dist && cp ./src/tailwind-preset.js ./src/globals.css dist/",
     "types": "tsc --emitDeclarationOnly",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "clean": "rm -rf ./dist && rm -rf .turbo"
@@ -21,6 +21,9 @@
     ],
     "./tailwind": [
       "./dist/tailwind-preset.js"
+    ],
+    "./globals": [
+      "./dist/globals.css"
     ]
   },
   "files": [
