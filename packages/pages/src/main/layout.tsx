@@ -20,7 +20,7 @@ export default async function RootLayout({
       <body
         className={clsx(
           'bg-background font-sans antialiased',
-          urbanist.className
+          urbanist.className,
         )}
       >
         <Toast />

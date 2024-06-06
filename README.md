@@ -1,5 +1,5 @@
 ---
-name: Microfrontends
+name: Watchify Microfrontends
 slug: microfrontends
 description: Microfrontends allow teams to work independently of each other by splitting the application into smaller, shareable, and modular components.
 framework: Next.js

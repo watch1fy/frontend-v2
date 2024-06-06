@@ -2,19 +2,17 @@
   "name": "eslint-config-watchify",
   "version": "0.0.1",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
-  "license": "MIT",
-  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "eslint": "^8.26.0",
-    "eslint-config-next": "canary",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "latest",
-    "eslint-plugin-unused-imports": "^3.1.0"
+    "eslint-plugin-unused-imports": "^3.2.0"
   },
   "devDependencies": {
-    "typescript": "^4.8.4"
+    "typescript": "^5.4.5"
   }
 }
