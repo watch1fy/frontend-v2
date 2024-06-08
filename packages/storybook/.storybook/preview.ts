@@ -1,15 +1,19 @@
 import type { Preview } from '@storybook/react'
-import "@watchify/design-system/globals"
+import { withThemeByClassName } from '@storybook/addon-themes'
+import "./styles.css"
 
 const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
+  parameters: {},
 }
+
+export const decorators = [
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'dark',
+  }),
+];
 
 export default preview

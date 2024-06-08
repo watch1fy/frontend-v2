@@ -9,21 +9,24 @@
     "copy-globals": "mkdir -p dist && cp ./src/tailwind-preset.js ./src/globals.css dist/",
     "types": "tsc --emitDeclarationOnly",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
-    "clean": "rm -rf ./dist && rm -rf .turbo"
+    "clean": "rm -rf ./dist && rm -rf .turbo && rm -rf ./node_modules"
   },
   "sideEffects": false,
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/src/index.js",
     "./*": [
-      "./dist/*.js",
-      "./dist/*/index.js"
+      "./dist/src/*.js",
+      "./dist/src/*/index.js"
     ],
     "./tailwind": [
       "./dist/tailwind-preset.js"
     ],
     "./globals": [
       "./dist/globals.css"
+    ],
+    "./package.json": [
+      "./package.json"
     ]
   },
   "files": [
@@ -48,7 +51,7 @@
           "dist/*/index.d.ts"
         ],
         "tailwind": [
-          "dist/tailwind.d.cts"
+          "dist/tailwind.d.ts"
         ]
       }
     }

@@ -2,7 +2,6 @@ import { NextUIProviders } from '@watchify/design-system'
 import { Footer, Toast, WatchifyNavbar } from '@watchify/design-system'
 import clsx from 'clsx'
 import { Urbanist } from 'next/font/google'
-import '../styles/globals.css'
 
 export const urbanist = Urbanist({
   subsets: ['latin'],
