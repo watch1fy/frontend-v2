@@ -1,5 +1,5 @@
 {
-  "name": "@watchify/design-system",
+  "name": "@watchify/components",
   "version": "0.0.1",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
   "scripts": {
@@ -22,7 +22,7 @@
     "./tailwind": [
       "./dist/tailwind-preset.js"
     ],
-    "./globals": [
+    "./globals.css": [
       "./dist/globals.css"
     ],
     "./package.json": [

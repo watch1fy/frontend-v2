@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@watchify/design-system'
+import { Button } from '@watchify/components'
 import { useEffect } from 'react'
-import { FaCircleExclamation } from '@watchify/design-system'
+import { FaCircleExclamation } from '@watchify/components'
 
 export default function Errorr({
   error,

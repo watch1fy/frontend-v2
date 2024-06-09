@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .next && rm -rf .turbo"
+    "clean": "rm -rf .next && rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
-    "@watchify/design-system": "workspace:*",
+    "@watchify/components": "workspace:*",
     "@watchify/pages": "workspace:*",
     "next": "latest",
     "react": "latest",

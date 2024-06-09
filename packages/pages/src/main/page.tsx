@@ -1,4 +1,4 @@
-import { About, Features, Hero } from '@watchify/design-system'
+import { About, Features, Hero } from '@watchify/components'
 
 export default async function Home() {
   return (

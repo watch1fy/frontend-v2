@@ -10,10 +10,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'aceternity.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'upload.wikimedia.org',
       },
     ],

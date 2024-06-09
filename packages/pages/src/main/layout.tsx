@@ -1,5 +1,5 @@
-import { NextUIProviders } from '@watchify/design-system'
-import { Footer, Toast, WatchifyNavbar } from '@watchify/design-system'
+import { NextUIProviders } from '@watchify/components'
+import { Footer, Toast, WatchifyNavbar } from '@watchify/components'
 import clsx from 'clsx'
 import { Urbanist } from 'next/font/google'
 

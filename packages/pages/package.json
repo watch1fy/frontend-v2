@@ -50,8 +50,9 @@
     "react-dom": "latest"
   },
   "dependencies": {
+    "@storybook/react": "^8.1.6",
     "@swc/helpers": "^0.5.1",
-    "@watchify/design-system": "workspace:*",
+    "@watchify/components": "workspace:*",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

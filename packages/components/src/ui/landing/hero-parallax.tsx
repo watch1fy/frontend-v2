@@ -14,9 +14,9 @@ import { MdArrowForward } from 'react-icons/md'
 import { useIsTablet } from '@watchify/lib'
 
 export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
-  const firstRow = contentList.slice(0, 5)
-  const secondRow = contentList.slice(5, 10)
-  const thirdRow = contentList.slice(10, 15)
+  const firstRow = contentList?.slice(0, 5)
+  const secondRow = contentList?.slice(5, 10)
+  const thirdRow = contentList?.slice(10, 15)
   const ref = React.useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -66,7 +66,7 @@ export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
         className="absolute top-auto left-0 opacity-25"
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-24">
-          {firstRow.map((content) => (
+          {firstRow?.map((content) => (
             <ContentCard
               content={content}
               translate={translateX}
@@ -75,7 +75,7 @@ export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
           ))}
         </motion.div>
         <motion.div className="flex flex-row  mb-24 space-x-20">
-          {secondRow.map((content) => (
+          {secondRow?.map((content) => (
             <ContentCard
               content={content}
               translate={translateXReverse}
@@ -87,7 +87,7 @@ export const HeroParallax = ({ contentList }: { contentList: any[] }) => {
           style={{}}
           className="flex flex-row-reverse space-x-reverse space-x-20"
         >
-          {thirdRow.map((content) => (
+          {thirdRow?.map((content) => (
             <ContentCard
               content={content}
               translate={translateX}
