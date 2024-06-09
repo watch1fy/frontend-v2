@@ -1,4 +1,4 @@
-import { Features, Hero, About, CTA } from './landing'
+import { Features, Hero, About } from './landing'
 import FeatureAnchor from './anchor'
 import Footer from './footer'
 import Toast from './toast'
@@ -10,7 +10,6 @@ export {
   Features,
   Hero,
   About,
-  CTA,
   FeatureAnchor,
   Footer,
   Toast,
