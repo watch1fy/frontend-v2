@@ -161,9 +161,6 @@ export const ContentCard = ({
       style={{
         x: translate,
       }}
-      whileHover={{
-        y: -20,
-      }}
       key={content.id}
       className="group/content md:w-[559px] md:h-80 relative flex-shrink-0 rounded-xl"
     >

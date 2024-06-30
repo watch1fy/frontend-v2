@@ -48,6 +48,7 @@ function About() {
         </ScrollShadow>
       </div>
       <div id="feature-anchor" className="hidden"></div>
+      <div id='about-anchor' />
     </section>
   )
 }

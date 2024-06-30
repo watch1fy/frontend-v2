@@ -14,7 +14,7 @@ export const features = [
   {
     heading: 'Dual Control Playback',
     content:
-      "Take turns controlling playback, ensuring both you and your partner have a say in what happens next. Whether it's pausing for a bathroom break or rewinding to catch a crucial scene, our dual control system keeps things fair and interactive.",
+      "Take turns controlling playback, ensuring both you and your partner have a say in what happens next. Whether it's pausing for a break or rewinding to catch a crucial scene, our dual control system keeps things fair and interactive.",
     src: '/illustrations/dual.svg',
   },
   {

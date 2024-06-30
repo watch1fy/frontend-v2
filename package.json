@@ -1,6 +1,6 @@
 {
   "name": "watchify",
-  "repository": "https://github.com/vercel/examples.git",
+  "repository": "https://github.com/watch1fy/frontend-v2.git",
   "license": "MIT",
   "private": true,
   "workspaces": [

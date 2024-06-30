@@ -1,9 +1,8 @@
 name: Release
 
 on:
+  # NOTE: Empty push tag to temporarily remove deplyment/release
   push:
-    branches:
-      - main
 
 env:
   FORCE_COLOR: 3
