@@ -1,37 +1,45 @@
 name: Release
 
 on:
-  # NOTE: Empty push tag to temporarily remove deplyment/release
-  push:
+  pull_request:
+    branches:
+      - main
 
-env:
-  FORCE_COLOR: 3
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: acme
+  push:
+    branches:
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    if: github.event.pull_request.merged == true
     name: Release
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v2.2.2
+        uses: pnpm/action-setup@v4
         with:
-          version: 7.12.1
+          version: latest
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.14
+          node-version: 20.x
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@anmolsudhir'
           cache: pnpm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile --ignore-scripts
@@ -44,13 +52,7 @@ jobs:
           publish: pnpm release
           # Alias to `changeset version` script in package.json
           version: pnpm version-packages
-          commit: 'chore: update package versions'
-          title: 'chore: update package versions'
+          commit: 'chore: Updated package versions'
+          title: 'chore: Updated package versions'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Send a Slack notification if a publish happens
-        if: steps.changesets.outputs.published == 'true'
-        # You can do something when a publish happens.
-        run: my-slack-bot send-notification --message "A new version of ${GITHUB_REPOSITORY} was published!"

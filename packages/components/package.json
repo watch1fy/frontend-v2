@@ -1,6 +1,6 @@
 {
   "name": "@watchify/components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
   "scripts": {
     "dev": "pnpm build:swc -w",
@@ -39,11 +39,12 @@
         "src/*/index"
       ],
       "tailwind": [
-        "dist/tailwind.d.ts"
+        "dist/tailwind-preset.d.ts"
       ]
     }
   },
   "publishConfig": {
+    "@watch1fy:registry": "https://npm.pkg.github.com",
     "typesVersions": {
       "*": {
         "*": [
@@ -51,7 +52,7 @@
           "dist/*/index.d.ts"
         ],
         "tailwind": [
-          "dist/tailwind.d.ts"
+          "dist/tailwind-preset.d.ts"
         ]
       }
     }

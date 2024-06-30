@@ -1,9 +1,9 @@
 {
   "name": "eslint-config-watchify",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
   "publishConfig": {
-    "access": "public"
+    "@watch1fy:registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "eslint": "^8.57.0",
