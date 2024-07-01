@@ -1,5 +1,5 @@
 {
-  "name": "@watchify/components",
+  "name": "@watch1fy/components",
   "version": "0.1.0",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
   "scripts": {
@@ -44,7 +44,7 @@
     }
   },
   "publishConfig": {
-    "@watch1fy:registry": "https://npm.pkg.github.com",
+    "registry": "https://npm.pkg.github.com",
     "typesVersions": {
       "*": {
         "*": [

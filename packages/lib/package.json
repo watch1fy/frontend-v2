@@ -1,5 +1,5 @@
 {
-  "name": "@watchify/lib",
+  "name": "@watch1fy/lib",
   "version": "0.1.0",
   "repository": "https://github.com/watch1fy/frontend-v2.git",
   "license": "MIT",
@@ -36,7 +36,7 @@
     }
   },
   "publishConfig": {
-    "@watch1fy:registry": "https://npm.pkg.github.com",
+    "registry": "https://npm.pkg.github.com",
     "typesVersions": {
       "*": {
         "*": [
